@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Implementing Control Flow :: Ansible Basics</title>
+    <link rel="prev" href="using-variables-and-templates.html">
+    <link rel="next" href="../appendix/appendix.html">
+    <meta name="generator" content="Antora 3.1.3">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://www.redhat.com" target="_blank"><img src="../../../_/img/redhat-logo.png" height="40px" alt="Red Hat"></a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="../../..">Ansible Basics</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://github.com/RedHatQuickCourses/course-starter-template/issues" target="_blank">Report Issues</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="aks-test-1" data-version="1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Ansible Basics</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Home</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../LABENV/index.html">Lab Environment</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../introduction-to-ansible/introduction-to-ansible.html">Introduction to Ansible</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/ansible-architecture-and-components.html">Ansible Architecture and Components</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/inventory-management-in-ansible.html">Inventory Management in Ansible</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/playbooks-and-ad-hoc-commands.html">Playbooks and Ad-hoc Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/ansible-modules-and-roles.html">Ansible Modules and Roles</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/variables-templates-and-facts.html">Variables, Templates, and Facts</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/control-flow-and-handlers.html">Control Flow and Handlers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/error-handling-and-debugging.html">Error Handling and Debugging</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/ansible-towerawx-for-enhanced-management.html">Ansible Tower/AWX for Enhanced Management</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="hands-on-labs.html">Hands-on Labs</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="setting-up-a-test-environment.html">Setting up a Test Environment</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="writing-simple-playbooks.html">Writing Simple Playbooks</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="executing-ad-hoc-commands.html">Executing Ad-hoc Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="managing-inventory.html">Managing Inventory</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="using-variables-and-templates.html">Using Variables and Templates</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="implementing-control-flow.html">Implementing Control Flow</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../appendix/appendix.html">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Ansible Basics</span>
+    <span class="version">1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">Ansible Basics</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Ansible Basics</a></li>
+    <li><a href="hands-on-labs.html">Hands-on Labs</a></li>
+    <li><a href="implementing-control-flow.html">Implementing Control Flow</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Implementing Control Flow</h1>
+<div class="sect1">
+<h2 id="_implementing_control_flow"><a class="anchor" href="#_implementing_control_flow"></a>Implementing Control Flow</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ansible playbooks are powerful for automating tasks but often require decision-making capabilities based on conditions. Ansible&#8217;s control flow features provide the means to manage complex automation tasks by controlling the execution of tasks, handling loops, and applying conditionals. This section will explore these essential control flow components: when, when_except, when_role, and when_serial.</p>
+</div>
+</div>
+</div>
+<h1 id="_when_conditional_execution" class="sect0"><a class="anchor" href="#_when_conditional_execution"></a>When (Conditional Execution)</h1>
+<div class="paragraph">
+<p>The <code>when</code> condition allows you to execute a task only if a specified condition is true. You can use various operators such as equals (=), not equals (!=), greater than (&gt;), less than (&lt;), etc., to create conditions based on facts, variables, or command outputs.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">- name: Print message when OS is CentOS
+  debug:
+    msg: "You are running a CentOS system."
+  when: ansible_distribution == "CentOS"</code></pre>
+</div>
+</div>
+<h1 id="_when_except_conditional_execution_exclusion" class="sect0"><a class="anchor" href="#_when_except_conditional_execution_exclusion"></a>When_except (Conditional Execution Exclusion)</h1>
+<div class="paragraph">
+<p>The <code>when_except</code> condition works similarly to the <code>when</code> condition but executes a task only if the specified condition is false.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">- name: Print message unless OS is CentOS
+  debug:
+    msg: "This will run on non-CentOS systems."
+  when_except: ansible_distribution == "CentOS"</code></pre>
+</div>
+</div>
+<h1 id="_when_role_task_execution_based_on_role" class="sect0"><a class="anchor" href="#_when_role_task_execution_based_on_role"></a>When_role (Task Execution Based on Role)</h1>
+<div class="paragraph">
+<p>The <code>when_role</code> condition allows you to execute tasks depending on the current role. This is particularly useful for role-specific tasks or configurations.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">- name: Execute role-specific task
+  debug:
+    msg: "This task will run when the 'common' role is active."
+  when_role: common</code></pre>
+</div>
+</div>
+<h1 id="_when_serial_serial_execution_of_tasks" class="sect0"><a class="anchor" href="#_when_serial_serial_execution_of_tasks"></a>When_serial (Serial Execution of Tasks)</h1>
+<div class="paragraph">
+<p>By default, Ansible executes tasks in parallel unless specified otherwise. The <code>when_serial</code> condition forces a task to execute sequentially, one after another, regardless of the number of hosts or their grouping.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">- name: Install package on each host sequentially
+  yum:
+    name: httpd
+    state: present
+  when_serial: 10</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Hands-on Lab Activity: Implementing Control Flow</p>
+</div>
+<div class="paragraph">
+<p>In this hands-on activity, you will create a playbook that demonstrates the use of control flow components. Follow these steps to set up and complete the lab:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Set Up Your Test Environment</strong>: Ensure you have a test environment with multiple hosts (e.g., virtual machines or containers) running different operating systems.</p>
+</li>
+<li>
+<p><strong>Create a Playbook File</strong>: Create an Ansible playbook file, e.g., <code>control_flow_demo.yml</code>, and add the following content:</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">---
+- hosts: all
+  become: yes
+
+  - name: Install Apache (CentOS only)
+    yum:
+      name: httpd
+      state: present
+    when: ansible_distribution == "CentOS"
+
+  - name: Install Nginx (non-CentOS only)
+    apt:
+      name: nginx
+      state: present
+    when_except: ansible_distribution == "CentOS"
+
+  - name: Print role-specific message
+    debug:
+      msg: "Running within the 'common' role."
+    when_role: common
+
+  - name: Execute tasks serially
+    yum:
+      name: vim
+      state: present
+    when_serial: 5</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Execute Your Playbook</strong>: Run your playbook against your test environment, ensuring it applies control flow as defined in the playbook.</p>
+</li>
+<li>
+<p><strong>Observe and Analyze Results</strong>: Carefully examine the playbook&#8217;s output to understand how each control flow component managed task execution on different hosts and under varying conditions.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>By completing this hands-on lab activity, you will gain practical experience in implementing control flow within Ansible playbooks, making your automation tasks more flexible and adaptable.</p>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="using-variables-and-templates.html">Using Variables and Templates</a></span>
+  <span class="next"><a href="../appendix/appendix.html">Appendix</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <img src="../../../_/img/rhl-logo-red.png" height="40px" alt="Red Hat"  href="https://redhat.com" >
+</footer><script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

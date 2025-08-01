@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Control Flow and Handlers :: Ansible Basics</title>
+    <link rel="prev" href="variables-templates-and-facts.html">
+    <link rel="next" href="error-handling-and-debugging.html">
+    <meta name="generator" content="Antora 3.1.3">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://www.redhat.com" target="_blank"><img src="../../../_/img/redhat-logo.png" height="40px" alt="Red Hat"></a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="../../..">Ansible Basics</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://github.com/RedHatQuickCourses/course-starter-template/issues" target="_blank">Report Issues</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="aks-test-1" data-version="1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Ansible Basics</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Home</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../LABENV/index.html">Lab Environment</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="introduction-to-ansible.html">Introduction to Ansible</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="ansible-architecture-and-components.html">Ansible Architecture and Components</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="inventory-management-in-ansible.html">Inventory Management in Ansible</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="playbooks-and-ad-hoc-commands.html">Playbooks and Ad-hoc Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="ansible-modules-and-roles.html">Ansible Modules and Roles</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="variables-templates-and-facts.html">Variables, Templates, and Facts</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="control-flow-and-handlers.html">Control Flow and Handlers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="error-handling-and-debugging.html">Error Handling and Debugging</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="ansible-towerawx-for-enhanced-management.html">Ansible Tower/AWX for Enhanced Management</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../hands-on-labs/hands-on-labs.html">Hands-on Labs</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../hands-on-labs/setting-up-a-test-environment.html">Setting up a Test Environment</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../hands-on-labs/writing-simple-playbooks.html">Writing Simple Playbooks</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../hands-on-labs/executing-ad-hoc-commands.html">Executing Ad-hoc Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../hands-on-labs/managing-inventory.html">Managing Inventory</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../hands-on-labs/using-variables-and-templates.html">Using Variables and Templates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../hands-on-labs/implementing-control-flow.html">Implementing Control Flow</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../appendix/appendix.html">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Ansible Basics</span>
+    <span class="version">1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">Ansible Basics</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Ansible Basics</a></li>
+    <li><a href="introduction-to-ansible.html">Introduction to Ansible</a></li>
+    <li><a href="control-flow-and-handlers.html">Control Flow and Handlers</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Control Flow and Handlers</h1>
+<h1 id="_control_flow_and_handlers" class="sect0"><a class="anchor" href="#_control_flow_and_handlers"></a>Control Flow and Handlers</h1>
+<div class="paragraph">
+<p>Ansible playbooks, while powerful, often require decision-making based on various conditions. Ansible provides control flow keywords to handle such scenarios effectively. This section will discuss control flow keywords and handlers in detail.</p>
+</div>
+<div class="sect1">
+<h2 id="_control_flow_keywords"><a class="anchor" href="#_control_flow_keywords"></a>Control Flow Keywords</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Control flow keywords enable you to create conditional execution and loops within your Ansible playbooks. Some key control flow keywords are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>when</strong>: Applies conditions for task execution. Tasks are executed only if the specified condition evaluates to <code>true</code>.</p>
+<div class="literalblock">
+<div class="content">
+<pre>```yaml
+- name: Example task
+  ansible.builtin.debug:
+    msg: "This message will be displayed when the condition is true"
+  when: some_variable == "desired_value"
+```</pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>when</strong>: Similar to the 'when' keyword, it is used for conditional execution of tasks or entire plays.</p>
+<div class="literalblock">
+<div class="content">
+<pre>```yaml
+- host: all
+  become: yes
+  when: "'debian' in ansible_distribution"
+  tasks:
+    - name: Example Debian task
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+```</pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>loops</strong>: Used to create loops within your playbooks, enabling the execution of tasks multiple times based on a list or dictionary.</p>
+<div class="literalblock">
+<div class="content">
+<pre>```yaml
+- name: Loop over a list
+  hosts: all
+  become: yes
+  vars:
+    my_list:
+      - item1
+      - item2
+      - item3
+  tasks:
+    - name: Echo the loop variable
+      ansible.builtin.debug:
+        msg: "The loop variable is {{ item }}"
+      loop: "{{ my_list }}"
+```</pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>block</strong>: Used to group tasks that should run only if a certain condition is met, and tasks in the 'when' block are skipped otherwise.</p>
+<div class="literalblock">
+<div class="content">
+<pre>```yaml
+- name: Block example
+  hosts: all
+  become: yes
+  vars:
+    check_variable: "value"
+  tasks:
+    - name: Check variable
+      ansible.builtin.debug:
+        msg: "Variable has a value"
+      when: check_variable != ""</pre>
+</div>
+</div>
+</li>
+<li>
+<p>name: Block of tasks if the variable is not empty
+block:</p>
+</li>
+<li>
+<p>name: Task 1 in block
+ansible.builtin.debug:
+  msg: "Task 1 executed"</p>
+</li>
+<li>
+<p>name: Task 2 in block
+    ansible.builtin.debug:
+      msg: "Task 2 executed"
+when: check_variable != ""</p>
+</li>
+<li>
+<p>name: Tasks outside the block
+      ansible.builtin.debug:
+        msg: "These tasks are always executed"
+<code>`</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_handlers"><a class="anchor" href="#_handlers"></a>Handlers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Handlers in Ansible are used to manage changes triggered by notifiable events, like service restarts or notifications. They run only when a notify statement is encountered within a task or when explicitly called using the <code>ansible.builtin.notify</code> module. This separation of concerns ensures that actions like service restarts do not occur unnecessarily for every task but only when necessary, optimizing resources and improving playbook performance.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>notify</strong>: Used within tasks to signal that a handler should be run afterward if any changes have been made.</p>
+<div class="literalblock">
+<div class="content">
+<pre>```yaml
+- name: Restart the Apache service
+  ansible.builtin.service:
+    name: apache2
+    state: restarted
+    notify:
+      - Restart Apache notifications
+```</pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>handlers</strong>: Define the actions to perform when notified by tasks. Handlers are executed only if there have been notifiable events (like changes in files, services, etc.) since the last handler invocation.</p>
+<div class="literalblock">
+<div class="content">
+<pre>```yaml
+handlers:
+  - name: Restart Apache notifications
+    ansible.builtin.service:
+      name: apache2
+      state: restarted
+```</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In summary, control flow keywords and handlers are crucial for managing conditional execution and optimizing resource usage in Ansible playbooks. By understanding and using these concepts effectively, users can create more efficient, dynamic, and maintainable automation solutions.</p>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="variables-templates-and-facts.html">Variables, Templates, and Facts</a></span>
+  <span class="next"><a href="error-handling-and-debugging.html">Error Handling and Debugging</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <img src="../../../_/img/rhl-logo-red.png" height="40px" alt="Red Hat"  href="https://redhat.com" >
+</footer><script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

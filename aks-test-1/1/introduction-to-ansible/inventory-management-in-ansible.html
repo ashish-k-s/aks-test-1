@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Inventory Management in Ansible :: Ansible Basics</title>
+    <link rel="prev" href="ansible-architecture-and-components.html">
+    <link rel="next" href="playbooks-and-ad-hoc-commands.html">
+    <meta name="generator" content="Antora 3.1.3">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://www.redhat.com" target="_blank"><img src="../../../_/img/redhat-logo.png" height="40px" alt="Red Hat"></a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="../../..">Ansible Basics</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://github.com/RedHatQuickCourses/course-starter-template/issues" target="_blank">Report Issues</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="aks-test-1" data-version="1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Ansible Basics</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Home</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../LABENV/index.html">Lab Environment</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="introduction-to-ansible.html">Introduction to Ansible</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="ansible-architecture-and-components.html">Ansible Architecture and Components</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="inventory-management-in-ansible.html">Inventory Management in Ansible</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="playbooks-and-ad-hoc-commands.html">Playbooks and Ad-hoc Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="ansible-modules-and-roles.html">Ansible Modules and Roles</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="variables-templates-and-facts.html">Variables, Templates, and Facts</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="control-flow-and-handlers.html">Control Flow and Handlers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="error-handling-and-debugging.html">Error Handling and Debugging</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="ansible-towerawx-for-enhanced-management.html">Ansible Tower/AWX for Enhanced Management</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../hands-on-labs/hands-on-labs.html">Hands-on Labs</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../hands-on-labs/setting-up-a-test-environment.html">Setting up a Test Environment</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../hands-on-labs/writing-simple-playbooks.html">Writing Simple Playbooks</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../hands-on-labs/executing-ad-hoc-commands.html">Executing Ad-hoc Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../hands-on-labs/managing-inventory.html">Managing Inventory</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../hands-on-labs/using-variables-and-templates.html">Using Variables and Templates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../hands-on-labs/implementing-control-flow.html">Implementing Control Flow</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../appendix/appendix.html">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Ansible Basics</span>
+    <span class="version">1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">Ansible Basics</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Ansible Basics</a></li>
+    <li><a href="introduction-to-ansible.html">Introduction to Ansible</a></li>
+    <li><a href="inventory-management-in-ansible.html">Inventory Management in Ansible</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Inventory Management in Ansible</h1>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Inventory Management in Ansible</strong></p>
+<div class="literalblock">
+<div class="content">
+<pre>Ansible, an open-source automation tool, relies heavily on its inventory management system to define and manage the nodes (targets) it manages. The inventory is a basic YAML file that contains information about the hosts managed by Ansible, enabling you to categorize them logically and access them easily.</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>==== Inventory File Structure</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>The inventory file is typically named `inventory` and resides in the `/path/to/your/playbook/directory/` or can be referenced with the `-i` option when executing playbooks. A basic inventory file structure looks like this:</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[groupname]
+host1 ansible_host=192.168.1.10 ansible_user=username</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[groupname:vars]
+variable1=value1
+variable2=value2</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[groupname:children]
+group3
+group4</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[hosts]
+host1.example.com
+host2.example.com</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>This structure includes groups, variables, children, and hosts sections. Groups categorize hosts logically for easier management. Variables store reusable values that can be accessed across playbooks and roles. The children section allows grouping of other groups, creating hierarchical structures, whereas the hosts section lists the actual managed nodes.</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>==== Inventory Scripting</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Ansible also supports dynamic inventory scripts that automatically fetch host information from external data sources like cloud providers (AWS, Azure, GCP), virtualization platforms (VMware, OpenStack), or any custom systems. These scripts are written in programming languages such as Python and can be integrated using the `-i` option followed by the script path when executing playbooks.</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>For example, to use an external inventory script located at `/path/to/your/dynamic_inventory.py`, you would run:</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>```bash
+ansible-playbook -i /path/to/your/dynamic_inventory.py your_playbook.yml
+```</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>==== Hands-on Activity: Creating and Managing Inventory</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>To solidify the concepts, follow these hands-on steps to create an inventory file and manage hosts:</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a simple inventory file (<code>inventory</code>) with at least two groups (webservers, databases) and three hosts each, assigning relevant variables for each host.</p>
+</li>
+<li>
+<p>Test your inventory file by running an ad-hoc command (<code>ansible webservers -m ping</code>). This should successfully ping all webserver hosts.</p>
+</li>
+<li>
+<p>Create a playbook (<code>web_config.yml</code>) to configure the 'httpd' service on your webserver group using the <code>yum</code> and <code>service</code> modules.</p>
+</li>
+<li>
+<p>Execute the playbook with your inventory file:</p>
+<div class="literalblock">
+<div class="content">
+<pre>```bash
+ansible-playbook -i inventory web_config.yml
+```</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>This hands-on activity will provide practical experience in creating, managing, and utilizing Ansible inventories for effective automation.</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Remember to refer to the official [Ansible documentation](<a href="https://docs.ansible.com/ansible/latest/inventory/intro_inventory.html" class="bare">https://docs.ansible.com/ansible/latest/inventory/intro_inventory.html</a>) for additional details and advanced inventory management techniques.</p>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="ansible-architecture-and-components.html">Ansible Architecture and Components</a></span>
+  <span class="next"><a href="playbooks-and-ad-hoc-commands.html">Playbooks and Ad-hoc Commands</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <img src="../../../_/img/rhl-logo-red.png" height="40px" alt="Red Hat"  href="https://redhat.com" >
+</footer><script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

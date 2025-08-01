@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Writing Simple Playbooks :: Ansible Basics</title>
+    <link rel="prev" href="setting-up-a-test-environment.html">
+    <link rel="next" href="executing-ad-hoc-commands.html">
+    <meta name="generator" content="Antora 3.1.3">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://www.redhat.com" target="_blank"><img src="../../../_/img/redhat-logo.png" height="40px" alt="Red Hat"></a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="../../..">Ansible Basics</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://github.com/RedHatQuickCourses/course-starter-template/issues" target="_blank">Report Issues</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="aks-test-1" data-version="1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Ansible Basics</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Home</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../LABENV/index.html">Lab Environment</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../introduction-to-ansible/introduction-to-ansible.html">Introduction to Ansible</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/ansible-architecture-and-components.html">Ansible Architecture and Components</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/inventory-management-in-ansible.html">Inventory Management in Ansible</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/playbooks-and-ad-hoc-commands.html">Playbooks and Ad-hoc Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/ansible-modules-and-roles.html">Ansible Modules and Roles</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/variables-templates-and-facts.html">Variables, Templates, and Facts</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/control-flow-and-handlers.html">Control Flow and Handlers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/error-handling-and-debugging.html">Error Handling and Debugging</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/ansible-towerawx-for-enhanced-management.html">Ansible Tower/AWX for Enhanced Management</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="hands-on-labs.html">Hands-on Labs</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="setting-up-a-test-environment.html">Setting up a Test Environment</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="writing-simple-playbooks.html">Writing Simple Playbooks</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="executing-ad-hoc-commands.html">Executing Ad-hoc Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="managing-inventory.html">Managing Inventory</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="using-variables-and-templates.html">Using Variables and Templates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="implementing-control-flow.html">Implementing Control Flow</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../appendix/appendix.html">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Ansible Basics</span>
+    <span class="version">1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">Ansible Basics</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Ansible Basics</a></li>
+    <li><a href="hands-on-labs.html">Hands-on Labs</a></li>
+    <li><a href="writing-simple-playbooks.html">Writing Simple Playbooks</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Writing Simple Playbooks</h1>
+<div class="sect2">
+<h3 id="_writing_simple_playbooks"><a class="anchor" href="#_writing_simple_playbooks"></a>Writing Simple Playbooks</h3>
+<div class="paragraph">
+<p>Ansible playbooks are written in the YAML format and serve as a collection of plays. A play defines a set of tasks to be executed against a specific target or group of targets, often referred to as hosts. Here&#8217;s how to write simple Ansible playbooks:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Playbook Structure</strong>: A basic playbook consists of three main sections:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>hosts</strong>: Specifies the target hosts or groups of hosts where tasks will be executed.</p>
+</li>
+<li>
+<p><strong>gather_facts</strong>: Controls whether Ansible gathers system facts about the managed nodes, which is often useful for dynamic inventory. Set it to <code>true</code> for most use cases (<code>gather_facts: false</code> can be used if you already have all required information).</p>
+</li>
+<li>
+<p><strong>tasks</strong>: Lists the tasks to be executed on the targeted hosts.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Example Playbook</strong>: Here&#8217;s a simple playbook named <code>example.yml</code> demonstrating the structure and basic tasks:</p>
+<div class="literalblock">
+<div class="content">
+<pre>```yaml
+---
+- name: Execute tasks against CentOS servers
+  hosts: centos_servers
+  gather_facts: yes
+  tasks:
+    - name: Ensure Apache is installed
+      package:
+        name: httpd
+        state: present</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>name: Start the Apache service
+      service:
+        name: httpd
+        state: started
+<code>`</code></p>
+<div class="literalblock">
+<div class="content">
+<pre>In this example:
+- The playbook is named `Execute tasks against CentOS servers`.
+- It targets a group of hosts called `centos_servers` (ensure you have defined this group in your Ansible inventory).
+- Facts are gathered from the targeted hosts.
+- Two tasks are defined:
+  1. Ensuring Apache (`httpd`) is installed using the `package` module.
+  2. Starting the Apache service with the `service` module.</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Running Playbooks</strong>: Execute playbooks using the <code>ansible-playbook</code> command followed by the playbook file name:</p>
+<div class="literalblock">
+<div class="content">
+<pre>```bash
+ansible-playbook example.yml
+```</pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Troubleshooting</strong>: If you encounter issues while writing or running playbooks, check for syntax errors in your YAML files and ensure that modules used in tasks are correctly installed. Utilize Ansible&#8217;s verbose output with <code>-vvv</code> for detailed logs during execution.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>By following these guidelines, you can create simple yet effective Ansible playbooks to automate routine administrative tasks across various systems. As you become more comfortable, you can explore additional features such as error handling, control flow, and roles for managing larger, modular projects.</p>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="setting-up-a-test-environment.html">Setting up a Test Environment</a></span>
+  <span class="next"><a href="executing-ad-hoc-commands.html">Executing Ad-hoc Commands</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <img src="../../../_/img/rhl-logo-red.png" height="40px" alt="Red Hat"  href="https://redhat.com" >
+</footer><script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

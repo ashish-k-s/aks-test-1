@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Setting up a Test Environment :: Ansible Basics</title>
+    <link rel="prev" href="hands-on-labs.html">
+    <link rel="next" href="writing-simple-playbooks.html">
+    <meta name="generator" content="Antora 3.1.3">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://www.redhat.com" target="_blank"><img src="../../../_/img/redhat-logo.png" height="40px" alt="Red Hat"></a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="../../..">Ansible Basics</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://github.com/RedHatQuickCourses/course-starter-template/issues" target="_blank">Report Issues</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="aks-test-1" data-version="1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Ansible Basics</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Home</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../LABENV/index.html">Lab Environment</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../introduction-to-ansible/introduction-to-ansible.html">Introduction to Ansible</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/ansible-architecture-and-components.html">Ansible Architecture and Components</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/inventory-management-in-ansible.html">Inventory Management in Ansible</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/playbooks-and-ad-hoc-commands.html">Playbooks and Ad-hoc Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/ansible-modules-and-roles.html">Ansible Modules and Roles</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/variables-templates-and-facts.html">Variables, Templates, and Facts</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/control-flow-and-handlers.html">Control Flow and Handlers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/error-handling-and-debugging.html">Error Handling and Debugging</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/ansible-towerawx-for-enhanced-management.html">Ansible Tower/AWX for Enhanced Management</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="hands-on-labs.html">Hands-on Labs</a>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="setting-up-a-test-environment.html">Setting up a Test Environment</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="writing-simple-playbooks.html">Writing Simple Playbooks</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="executing-ad-hoc-commands.html">Executing Ad-hoc Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="managing-inventory.html">Managing Inventory</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="using-variables-and-templates.html">Using Variables and Templates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="implementing-control-flow.html">Implementing Control Flow</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../appendix/appendix.html">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Ansible Basics</span>
+    <span class="version">1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">Ansible Basics</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Ansible Basics</a></li>
+    <li><a href="hands-on-labs.html">Hands-on Labs</a></li>
+    <li><a href="setting-up-a-test-environment.html">Setting up a Test Environment</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Setting up a Test Environment</h1>
+<div class="sect1">
+<h2 id="_setting_up_a_test_environment"><a class="anchor" href="#_setting_up_a_test_environment"></a>Setting up a Test Environment</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To effectively learn and practice Ansible, it&#8217;s essential to set up a test environment that mirrors a real-world scenario. This hands-on activity will guide you through creating a controlled environment on your local machine using virtualization software like Vagrant or Docker, or by configuring a few physical/virtual machines directly. Here, we&#8217;ll focus on setting up an environment with minimal requirements:</p>
+</div>
+<div class="sect2">
+<h3 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a>Prerequisites</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>A modern operating system (Linux, macOS, or Windows with WSL).</p>
+</li>
+<li>
+<p>Virtualization software (Vagrant or Docker) or direct access to a few machines for testing.</p>
+</li>
+<li>
+<p>Basic understanding of command-line interfaces.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_option_1_using_vagrant"><a class="anchor" href="#_option_1_using_vagrant"></a>Option 1: Using Vagrant</h3>
+<div class="paragraph">
+<p>[Vagrant](<a href="https://www.vagrantup.com/" class="bare">https://www.vagrantup.com/</a>) is a popular tool for creating and configuring lightweight, reproducible, and portable development environments. Follow these steps to set up an Ansible test environment using Vagrant:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Install VirtualBox</strong> (or another provider like Hyper-V or VMware):</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Download the appropriate installer for your host operating system from the [VirtualBox website](<a href="https://www.virtualbox.org/wiki/Downloads" class="bare">https://www.virtualbox.org/wiki/Downloads</a>).</p>
+</li>
+<li>
+<p>Follow installation instructions provided by Oracle.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Install Vagrant</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For Linux/macOS:
+```bash
+curl -fsSL <a href="https://apt.releases.hashicorp.com/gpg" class="bare">https://apt.releases.hashicorp.com/gpg</a> | sudo gpg --dearmor
+sudo apt-add-repository "deb [arch=amd64] <a href="https://apt.releases.hashicorp.com" class="bare">https://apt.releases.hashicorp.com</a> $(lsb_release -cs) main"
+sudo apt update &amp;&amp; sudo apt install vagrant</p>
+</li>
+<li>
+<p>For Windows (using WSL):
+Follow instructions from HashiCorp&#8217;s guide: [Vagrant on Windows](<a href="https://www.vagrantup.com/docs/installation/installation-windows.html" class="bare">https://www.vagrantup.com/docs/installation/installation-windows.html</a>).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Create a new Vagrant project directory</strong>:
+<code><code>bash
+mkdir ansible-test-env
+cd ansible-test-env
+</code></code></p>
+</li>
+<li>
+<p><strong>Initialize Vagrant</strong> and create a <code>Vagrantfile</code> with the following content:</p>
+<div class="literalblock">
+<div class="content">
+<pre>```ruby
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/bionic64" # Or another box of your choice
+  config.vm.network "private_network", ip: "192.168.50.4" # Set a static IP address
+  config.ssh.private_key_path = "path/to/your/ssh/key.pem" # Optional, if you want passwordless SSH access
+end
+```</pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Provision the Vagrant box</strong> using Ansible:</p>
+<div class="literalblock">
+<div class="content">
+<pre>Create an `ansible` directory inside your project folder and add a simple playbook named `site.yml`:</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>```ini
+- host: all
+  become: true
+  tasks:
+    - name: Ensure packages are up-to-date
+      apt:
+        update_cache: yes
+        upgrade: 'yes'
+    - name: Install Apache web server
+      package:
+        name: apache2
+        state: present
+```</pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Start and provision your Vagrant box</strong>:</p>
+<div class="literalblock">
+<div class="content">
+<pre>```bash
+vagrant up
+vagrant provisioning # or use `ansible-playbook ansible/site.yml` directly
+```</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Now you have a test environment running on VirtualBox managed by Vagrant, ready to practice Ansible playbooks, roles, and other concepts.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_option_2_using_docker"><a class="anchor" href="#_option_2_using_docker"></a>Option 2: Using Docker</h3>
+<div class="paragraph">
+<p>Alternatively, if you prefer using [Docker](<a href="https://docs.docker.com/get-started/" class="bare">https://docs.docker.com/get-started/</a>), follow these steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Install Docker</strong> on your host machine following official instructions at [Docker Documentation](<a href="https://docs.docker.com/get-docker/" class="bare">https://docs.docker.com/get-docker/</a>).</p>
+</li>
+<li>
+<p><strong>Create a Dockerfile</strong> in your project directory with the following content:</p>
+<div class="literalblock">
+<div class="content">
+<pre>```Dockerfile
+FROM ubuntu:bionic</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>RUN apt update &amp;&amp; \
+    apt install -y ansible apache2 &amp;&amp; \
+    rm -rf /var/lib/apt/lists/*</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>CMD ["/bin/bash"]
+```</pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Build and run Docker container</strong>:</p>
+<div class="literalblock">
+<div class="content">
+<pre>```bash
+docker build -t ansible-test .
+docker run --name ansible-test-container -d -p 80:80 ansible-test
+```</pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Access the container</strong> and practice Ansible playbooks as described in Option 1.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>These steps provide a foundation for setting up a test environment to practice Ansible concepts hands-on. Customize the setup according to your specific learning needs or available resources. Always remember to tear down the environment once you&#8217;re done practicing using <code>vagrant destroy</code> or <code>docker rm -f ansible-test-container</code>.</p>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="hands-on-labs.html">Hands-on Labs</a></span>
+  <span class="next"><a href="writing-simple-playbooks.html">Writing Simple Playbooks</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <img src="../../../_/img/rhl-logo-red.png" height="40px" alt="Red Hat"  href="https://redhat.com" >
+</footer><script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

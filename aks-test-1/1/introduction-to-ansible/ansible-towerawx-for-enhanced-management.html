@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Ansible Tower/AWX for Enhanced Management :: Ansible Basics</title>
+    <link rel="prev" href="error-handling-and-debugging.html">
+    <link rel="next" href="../hands-on-labs/hands-on-labs.html">
+    <meta name="generator" content="Antora 3.1.3">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://www.redhat.com" target="_blank"><img src="../../../_/img/redhat-logo.png" height="40px" alt="Red Hat"></a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="../../..">Ansible Basics</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://github.com/RedHatQuickCourses/course-starter-template/issues" target="_blank">Report Issues</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="aks-test-1" data-version="1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Ansible Basics</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Home</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../LABENV/index.html">Lab Environment</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="introduction-to-ansible.html">Introduction to Ansible</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="ansible-architecture-and-components.html">Ansible Architecture and Components</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="inventory-management-in-ansible.html">Inventory Management in Ansible</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="playbooks-and-ad-hoc-commands.html">Playbooks and Ad-hoc Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="ansible-modules-and-roles.html">Ansible Modules and Roles</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="variables-templates-and-facts.html">Variables, Templates, and Facts</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="control-flow-and-handlers.html">Control Flow and Handlers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="error-handling-and-debugging.html">Error Handling and Debugging</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="ansible-towerawx-for-enhanced-management.html">Ansible Tower/AWX for Enhanced Management</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../hands-on-labs/hands-on-labs.html">Hands-on Labs</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../hands-on-labs/setting-up-a-test-environment.html">Setting up a Test Environment</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../hands-on-labs/writing-simple-playbooks.html">Writing Simple Playbooks</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../hands-on-labs/executing-ad-hoc-commands.html">Executing Ad-hoc Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../hands-on-labs/managing-inventory.html">Managing Inventory</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../hands-on-labs/using-variables-and-templates.html">Using Variables and Templates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../hands-on-labs/implementing-control-flow.html">Implementing Control Flow</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../appendix/appendix.html">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Ansible Basics</span>
+    <span class="version">1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">Ansible Basics</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Ansible Basics</a></li>
+    <li><a href="introduction-to-ansible.html">Introduction to Ansible</a></li>
+    <li><a href="ansible-towerawx-for-enhanced-management.html">Ansible Tower/AWX for Enhanced Management</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Ansible Tower/AWX for Enhanced Management</h1>
+<h1 id="_ansible_towerawx_for_enhanced_management" class="sect0"><a class="anchor" href="#_ansible_towerawx_for_enhanced_management"></a>Ansible Tower/AWX for Enhanced Management</h1>
+<div class="paragraph">
+<p>Ansible Tower (now known as Automation Hub within Red Hat Ansible Automation Platform) and its open-source counterpart, AWX, are web-based tools that enhance Ansible&#8217;s management capabilities. They provide a visual dashboard, REST API, and a robust UI to streamline automation tasks, making it easier for teams to collaborate, manage access control, schedule jobs, and monitor activities.</p>
+</div>
+<div class="sect1">
+<h2 id="_architecture_and_key_components"><a class="anchor" href="#_architecture_and_key_components"></a>Architecture and Key Components</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_automation_hubansible_tower"><a class="anchor" href="#_automation_hubansible_tower"></a>Automation Hub/Ansible Tower</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Web Interface</strong>: A user-friendly web interface allowing administrators to create and manage projects, credentials, and inventory, as well as visualize job runs and schedules.</p>
+</li>
+<li>
+<p><strong>API</strong>: Provides a RESTful API for integrating with other tools or building custom interfaces.</p>
+</li>
+<li>
+<p><strong>Database</strong>: Stores configuration data, user information, project details, and scheduling information.</p>
+</li>
+<li>
+<p><strong>Message Broker (AMQP)</strong>: Facilitates communication between the Tower application server and Ansible automation nodes.</p>
+</li>
+<li>
+<p><strong>Automation Nodes</strong>: Run playbooks and manage remote systems. These can be installed on separate machines or run directly within the same process as Tower.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_awx"><a class="anchor" href="#_awx"></a>AWX</h3>
+<div class="paragraph">
+<p>AWX is an open-source version of Ansible Tower, sharing most of its features but without a commercial support contract. It consists of:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Web Interface</strong>: Similar to Automation Hub&#8217;s interface, allowing users to manage their automation projects and tasks.</p>
+</li>
+<li>
+<p><strong>API</strong>: Provides a RESTful API for integration with other tools or building custom interfaces.</p>
+</li>
+<li>
+<p><strong>Database</strong>: Stores configuration data, user information, project details, and scheduling information.</p>
+</li>
+<li>
+<p><strong>Message Broker (AMQP)</strong>: Similar to Tower, it facilitates communication between the AWX application server and automation nodes.</p>
+</li>
+<li>
+<p><strong>Automation Nodes</strong>: Can be managed similarly to those in Automation Hub.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_key_benefits_of_using_ansible_towerawx"><a class="anchor" href="#_key_benefits_of_using_ansible_towerawx"></a>Key Benefits of Using Ansible Tower/AWX</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Centralized Management</strong>: Provides a single pane of glass for managing multiple Ansible projects, users, and systems.</p>
+</li>
+<li>
+<p><strong>Access Control</strong>: Allows administrators to define granular permissions for users and teams, ensuring that only authorized individuals can perform specific actions.</p>
+</li>
+<li>
+<p><strong>Scheduled Jobs</strong>: Enables users to schedule playbook runs at specified times or intervals, making it easier to automate routine tasks.</p>
+</li>
+<li>
+<p><strong>Job Scheduling and Monitoring</strong>: Gives an overview of running, queued, and past job executions, along with detailed logs for debugging and troubleshooting.</p>
+</li>
+<li>
+<p><strong>Integration Capabilities</strong>: Offers extensive API support for integrating with existing tools in your IT ecosystem (e.g., CI/CD pipelines, ticketing systems).</p>
+</li>
+<li>
+<p><strong>Enhanced Collaboration</strong>: Facilitates team collaboration through shared projects, playbooks, and templates.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_hands_on_labs_ansible_towerawx"><a class="anchor" href="#_hands_on_labs_ansible_towerawx"></a>Hands-on Labs - Ansible Tower/AWX</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_setting_up_a_test_environment"><a class="anchor" href="#_setting_up_a_test_environment"></a>Setting Up a Test Environment</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Install AWX on your local machine or a virtual environment using Docker:
+<code><code>bash
+docker run -d --name awx -p 80:80 -p 443:443 -p 5000:5000 \
+  -e 'ANSIBLE_CALLBACKS=yaml' \
+  -e 'ANSIBLE_HOSTKEY_CHECKING=False' \
+  -e 'ANSIBLE_REMOTING_TRANSPORT=k shell' \
+  -e AWX_KEY=your_random_key \
+  automationhub/awx:latest
+</code></code></p>
+</li>
+<li>
+<p>Access the AWX web interface (usually at <code><a href="http://localhost/" class="bare">http://localhost/</a></code>) and log in with default credentials (<code>admin</code> / <code>password</code>).</p>
+</li>
+<li>
+<p>Change the admin password for security reasons.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_using_ansible_towerawx"><a class="anchor" href="#_using_ansible_towerawx"></a>Using Ansible Tower/AWX</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Create a new Project</strong>: In the AWX/Tower web interface, navigate to <strong>Projects</strong> &gt; <strong>Add</strong>. Fill in the details like Name, Organization, and Description, then click <strong>Save</strong>.</p>
+</li>
+<li>
+<p><strong>Add Credentials</strong>: Go to <strong>Credentials</strong> &gt; <strong>Add</strong>, providing necessary details such as SSH Username, Password or Private Key, and System details. Save the credentials for later use in playbooks.</p>
+</li>
+<li>
+<p><strong>Manage Inventory</strong>: Create or import an existing inventory using the <strong>Inventories</strong> section. You can use static inventories (simple INI files), dynamic inventories (using scripts to fetch data), or group your hosts into logical groups for easier management.</p>
+</li>
+<li>
+<p><strong>Create a Job Template</strong>: Under <strong>Templates</strong>, select <code>Playbooks</code> and click <strong>Add</strong>. Specify a playbook from your project, set variables if necessary, and choose any relevant job settings (e.g., limit, diff mode). Save the template to use it for job executions.</p>
+</li>
+<li>
+<p><strong>Launch Jobs</strong>: Use the web interface to start jobs based on your templates. Monitor progress and view logs within the Job View section.</p>
+</li>
+<li>
+<p><strong>Scheduling</strong>: Schedule recurring jobs by navigating to <strong>Schedules</strong> &gt; <strong>Add</strong>, selecting a template, setting desired frequency (e.g., daily, weekly), and specifying start time. Save the schedule to automate routine tasks without manual intervention.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>This content provides an overview of Ansible Tower/AWX for enhanced management, along with hands-on instructions to set up a test environment and perform basic operations. For more in-depth information, consult the official documentation: <a href="https://docs.ansible.com/ansible-tower/latest/html/index.html" class="bare">https://docs.ansible.com/ansible-tower/latest/html/index.html</a> (for Automation Hub) and <a href="https://docs.awxghorg/en/stable/" class="bare">https://docs.awxghorg/en/stable/</a> (for AWX).</p>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="error-handling-and-debugging.html">Error Handling and Debugging</a></span>
+  <span class="next"><a href="../hands-on-labs/hands-on-labs.html">Hands-on Labs</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <img src="../../../_/img/rhl-logo-red.png" height="40px" alt="Red Hat"  href="https://redhat.com" >
+</footer><script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

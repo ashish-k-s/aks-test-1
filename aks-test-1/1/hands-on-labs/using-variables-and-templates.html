@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Using Variables and Templates :: Ansible Basics</title>
+    <link rel="prev" href="managing-inventory.html">
+    <link rel="next" href="implementing-control-flow.html">
+    <meta name="generator" content="Antora 3.1.3">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://www.redhat.com" target="_blank"><img src="../../../_/img/redhat-logo.png" height="40px" alt="Red Hat"></a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="../../..">Ansible Basics</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://github.com/RedHatQuickCourses/course-starter-template/issues" target="_blank">Report Issues</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="aks-test-1" data-version="1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Ansible Basics</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Home</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../LABENV/index.html">Lab Environment</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../introduction-to-ansible/introduction-to-ansible.html">Introduction to Ansible</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/ansible-architecture-and-components.html">Ansible Architecture and Components</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/inventory-management-in-ansible.html">Inventory Management in Ansible</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/playbooks-and-ad-hoc-commands.html">Playbooks and Ad-hoc Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/ansible-modules-and-roles.html">Ansible Modules and Roles</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/variables-templates-and-facts.html">Variables, Templates, and Facts</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/control-flow-and-handlers.html">Control Flow and Handlers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/error-handling-and-debugging.html">Error Handling and Debugging</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/ansible-towerawx-for-enhanced-management.html">Ansible Tower/AWX for Enhanced Management</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="hands-on-labs.html">Hands-on Labs</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="setting-up-a-test-environment.html">Setting up a Test Environment</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="writing-simple-playbooks.html">Writing Simple Playbooks</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="executing-ad-hoc-commands.html">Executing Ad-hoc Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="managing-inventory.html">Managing Inventory</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="using-variables-and-templates.html">Using Variables and Templates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="implementing-control-flow.html">Implementing Control Flow</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../appendix/appendix.html">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Ansible Basics</span>
+    <span class="version">1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">Ansible Basics</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Ansible Basics</a></li>
+    <li><a href="hands-on-labs.html">Hands-on Labs</a></li>
+    <li><a href="using-variables-and-templates.html">Using Variables and Templates</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Using Variables and Templates</h1>
+<div class="sect1">
+<h2 id="_using_variables_and_templates"><a class="anchor" href="#_using_variables_and_templates"></a>Using Variables and Templates</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ansible utilizes variables, templates, and facts to manage configurations dynamically and efficiently. This section will delve into understanding and using these powerful features for managing your infrastructure.</p>
+</div>
+</div>
+</div>
+<h1 id="_variables" class="sect0"><a class="anchor" href="#_variables"></a>Variables</h1>
+<div class="paragraph">
+<p>Variables in Ansible are used to store data that can be reused across tasks and playbooks. They help in reducing redundancy and centralize management of configuration values. Variables can be defined in various ways, such as:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Built-in Variables</strong>: Ansible provides a set of built-in variables that offer information about the system or environment where the playbook is running. Examples include <code>ansible_hostname</code>, <code>ansible_eth0_ip_address</code>, etc.</p>
+</li>
+<li>
+<p><strong>Group Variables</strong>: Defined at the group level in the inventory file, these variables apply to all hosts within a particular group.</p>
+</li>
+<li>
+<p><strong>Host Variables</strong>: Specific to individual hosts and defined either in the inventory file or using host-specific variables in playbooks.</p>
+</li>
+<li>
+<p><strong>Role Variables</strong>: Defined within roles and applicable to tasks executed under that role.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>You can access and manipulate variables in your playbooks using the <code>set</code> and <code>when</code> conditionals, as shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">---
+- name: Set a variable
+  hosts: all
+  become: true
+  vars:
+    my_var: "This is a test value"
+  tasks:
+    - name: Display variable
+      debug:
+        var: my_var</code></pre>
+</div>
+</div>
+<h1 id="_templates" class="sect0"><a class="anchor" href="#_templates"></a>Templates</h1>
+<div class="paragraph">
+<p>Ansible templates allow you to create configuration files dynamically by merging a base template with variables. This helps in managing configurations centrally and ensuring consistency across multiple hosts. To use templates, you&#8217;ll need Jinja2 templating engine, which is included with Ansible.</p>
+</div>
+<div class="paragraph">
+<p>To implement templates:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a template file (e.g., <code>my_config.j2</code>) containing placeholders for variables.
+<code>`</code>
+# my_config.j2
+[unit]
+Name={{ my_service_name }}</p>
+<div class="literalblock">
+<div class="content">
+<pre>[Service]
+ExecStart=/usr/bin/{{ my_executable_name }}
+StandardOutput=inherit
+StandardError=inherit
+```</pre>
+</div>
+</div>
+</li>
+<li>
+<p>In your playbook, use the <code>template</code> module to render the template with variables and copy it to the target system.
+```yaml</p>
+<div class="ulist">
+<ul>
+<li>
+<p>name: Render and copy the configuration file
+  template:
+    src: my_config.j2
+    dest: /etc/systemd/system/{{ my_service_name }}.service
+<code>`</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<h1 id="_hands_on_lab_activity_using_variables_and_templates" class="sect0"><a class="anchor" href="#_hands_on_lab_activity_using_variables_and_templates"></a>Hands-on Lab Activity: Using Variables and Templates</h1>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Setting up a Test Environment</strong>: Prepare a test environment with multiple hosts, ensuring you have different groups in your inventory file for role-based management.</p>
+</li>
+<li>
+<p><strong>Creating Variables</strong>: Define variables at various levels (built-in, group, host, and role) to manage configuration values centrally.</p>
+</li>
+<li>
+<p><strong>Writing Templates</strong>: Create a template file for configuring a service, incorporating placeholders for dynamic values using Jinja2 syntax.</p>
+</li>
+<li>
+<p><strong>Implementing Variables and Templates in Playbooks</strong>: Write playbooks that use the defined variables and render templates to create final configuration files on target hosts.</p>
+</li>
+<li>
+<p><strong>Testing and Validation</strong>: Execute your playbooks and validate that the configurations are applied correctly, ensuring consistency across different hosts in your test environment.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>By practicing these hands-on activities, you&#8217;ll gain a better understanding of using Ansible variables and templates effectively for managing your infrastructure.</p>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="managing-inventory.html">Managing Inventory</a></span>
+  <span class="next"><a href="implementing-control-flow.html">Implementing Control Flow</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <img src="../../../_/img/rhl-logo-red.png" height="40px" alt="Red Hat"  href="https://redhat.com" >
+</footer><script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
