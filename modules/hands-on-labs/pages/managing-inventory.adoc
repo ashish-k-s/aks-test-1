@@ -1,0 +1,113 @@
+#  Managing Inventory
+
+= Ansible Basics
+
+  == Introduction to Ansible
+     ...
+     
+  == Hands-on Labs
+     ...
+ 
+    = Managing Inventory
+
+    [[ansible-inventory-overview]]
+    === Overview of Inventory Management
+
+    In Ansible, managing inventory is a crucial step to define and organize the hosts you intend to configure or manage. The inventory acts as a central repository for your host information, grouped into logical categories if needed. This enables efficient communication between your control machine and target nodes during playbook execution.
+
+    [[ansible-inventory-file]]
+    === Ansible Inventory File
+
+    Ansible uses an inventory file (usually named `hosts` by default) written in INI format to store the details of managed hosts. The inventory file is typically placed under a designated directory, `/etc/ansible/`, or any other location you specify with the `--inventory-dir` option when invoking Ansible commands.
+
+    Here's an example of a simple inventory file:
+
+    [webservers]
+    web1.example.com ansible_host=192.168.1.10
+    web2.example.com ansible_host=192.168.1.11
+
+    [database servers]
+    dbserver.example.com ansible_host=192.168.1.12
+
+    Variables like `ansible_host` can be used to assign specific IP addresses or hostnames to your managed nodes for easy identification and connection.
+
+    [[ansible-inventory-variables]]
+    === Using Variables in Inventory
+
+    You can introduce variables within the inventory file to streamline playbook configurations further. For instance, you could define a group variable to store common attributes such as the Python version, which can then be referenced by multiple hosts or roles. Here's how to add a variable to your inventory:
+
+    [webservers]
+    web1.example.com ansible_host=192.168.1.10
+    web2.example.com ansible_host=192.168.1.11
+    ansible_python_interpreter=/usr/bin/python3
+
+    In playbooks, you can then reference these variables using Jinja2 templating syntax:
+
+    - name: Ensure Python 3 is installed
+      apt:
+        name: python3
+        state: present
+
+    [[ansible-inventory-dynamic]]
+    === Dynamic Inventory
+
+    For more complex or dynamic environments, Ansible supports dynamic inventory scripts. These are programs (written in any scripting language like Python, Bash, etc.) that generate the inventory dynamically based on external data sources such as cloud APIs, configuration management databases, or other custom logic. This allows for real-time updates to your managed hosts as they change in your infrastructure.
+
+    To use dynamic inventory, you must configure Ansible with the path to your script using the `--inventory-script` option.
+
+    = Hands-on Labs
+
+      [[lab-setting-test-environment]]
+      === Setting Up a Test Environment for Inventory Management
+
+      Before diving into hands-on labs, set up a test environment that mirrors a real-world scenario:
+
+      1. Install Ansible on your control machine if not already installed.
+         ```bash
+         sudo apt update
+         sudo apt install software-properties-common
+         sudo apt-add-repository --yes --update ppa:ansible/ansible
+         sudo apt install ansible
+         ```
+
+      2. Create a simple inventory file (`hosts`) with at least two groups, e.g., webservers and database servers, and assign dummy IP addresses to them.
+
+      3. Test your inventory using the `ansible` command with the `-i` option to specify the inventory file:
+
+         ```bash
+         ansible webservers -m ping -a "echo='Testing connection to webserver'"
+         ```
+
+      This should return a PONG message from each web server in your group, confirming successful communication.
+
+      [[lab-writing-simple-playbooks]]
+      === Writing Simple Playbooks to Manage Inventory
+
+      Now, let's create simple playbooks that demonstrate how to leverage the inventory:
+
+      1. Create a playbook (`web_config.yml`) to ensure Python 3 is installed on all web servers:
+
+         ```yaml
+         ---
+         - name: Ensure Python 3 is installed
+           hosts: webservers
+           gather_facts: no
+           tasks:
+             - name: Install python3
+               apt:
+                 name: python3
+                 state: present
+         ```
+
+      2. Execute the playbook using Ansible, specifying the inventory file:
+
+         ```bash
+         ansible-playbook web_config.yml -i hosts
+         ```
+
+         This should install Python 3 on the web servers listed in your inventory.
+
+      By completing these labs, you've learned how to set up a basic inventory, use static and dynamic inventories, and apply them within Ansible playbooks for effective host management.
+    ]]
+
+This content provides an introduction to managing inventory in Ansible, covering concepts like the inventory file structure, using variables, and dynamic inventory scripts. It also includes hands-on labs that guide learners through setting up a test environment and writing simple playbooks to manage their inventories.

@@ -1,0 +1,11 @@
+#  Introduction to Ansible
+
+== Introduction to Ansible
+   - Ansible is an open-source automation tool, or "configuration management" tool, used for IT tasks such as application deployment, configuration management, and inline task automation.
+   - It follows a client-server architecture with minimal moving parts, using SSH for transport and YAML for the language definition.
+   - The Ansible server, also known as the control node, manages the inventory of managed nodes (clients or servers).
+   - Inventories can be statically defined in an INI-style file or dynamically fetched from various cloud sources.
+   - Playbooks are Ansible's configuration, deployment, and orchestration language, written in YAML, defining automation tasks to be executed on managed nodes.
+   - Ad-hoc commands offer a simple way to run single tasks directly against managed nodes without writing a full playbook.
+   - Ansible Modules, the building blocks of automation, encapsulate automation logic into reusable files with a consistent interface.
+   - Roles are a way to organize related playbooks, tasks, file buckets, and variables into manageable units for efficient automation management.

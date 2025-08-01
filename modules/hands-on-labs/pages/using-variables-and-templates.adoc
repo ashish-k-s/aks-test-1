@@ -1,0 +1,65 @@
+#  Using Variables and Templates
+
+== Using Variables and Templates
+
+Ansible utilizes variables, templates, and facts to manage configurations dynamically and efficiently. This section will delve into understanding and using these powerful features for managing your infrastructure.
+
+= Variables
+
+Variables in Ansible are used to store data that can be reused across tasks and playbooks. They help in reducing redundancy and centralize management of configuration values. Variables can be defined in various ways, such as:
+
+1. **Built-in Variables**: Ansible provides a set of built-in variables that offer information about the system or environment where the playbook is running. Examples include `ansible_hostname`, `ansible_eth0_ip_address`, etc.
+2. **Group Variables**: Defined at the group level in the inventory file, these variables apply to all hosts within a particular group.
+3. **Host Variables**: Specific to individual hosts and defined either in the inventory file or using host-specific variables in playbooks.
+4. **Role Variables**: Defined within roles and applicable to tasks executed under that role.
+
+You can access and manipulate variables in your playbooks using the `set` and `when` conditionals, as shown below:
+
+```yaml
+---
+- name: Set a variable
+  hosts: all
+  become: true
+  vars:
+    my_var: "This is a test value"
+  tasks:
+    - name: Display variable
+      debug:
+        var: my_var
+```
+
+= Templates
+
+Ansible templates allow you to create configuration files dynamically by merging a base template with variables. This helps in managing configurations centrally and ensuring consistency across multiple hosts. To use templates, you'll need Jinja2 templating engine, which is included with Ansible.
+
+To implement templates:
+
+1. Create a template file (e.g., `my_config.j2`) containing placeholders for variables.
+   ```
+   # my_config.j2
+   [unit]
+   Name={{ my_service_name }}
+
+   [Service]
+   ExecStart=/usr/bin/{{ my_executable_name }}
+   StandardOutput=inherit
+   StandardError=inherit
+   ```
+
+2. In your playbook, use the `template` module to render the template with variables and copy it to the target system.
+   ```yaml
+   - name: Render and copy the configuration file
+     template:
+       src: my_config.j2
+       dest: /etc/systemd/system/{{ my_service_name }}.service
+   ```
+
+= Hands-on Lab Activity: Using Variables and Templates
+
+1. **Setting up a Test Environment**: Prepare a test environment with multiple hosts, ensuring you have different groups in your inventory file for role-based management.
+2. **Creating Variables**: Define variables at various levels (built-in, group, host, and role) to manage configuration values centrally.
+3. **Writing Templates**: Create a template file for configuring a service, incorporating placeholders for dynamic values using Jinja2 syntax.
+4. **Implementing Variables and Templates in Playbooks**: Write playbooks that use the defined variables and render templates to create final configuration files on target hosts.
+5. **Testing and Validation**: Execute your playbooks and validate that the configurations are applied correctly, ensuring consistency across different hosts in your test environment.
+
+By practicing these hands-on activities, you'll gain a better understanding of using Ansible variables and templates effectively for managing your infrastructure.

@@ -1,0 +1,61 @@
+#  Ansible Tower/AWX for Enhanced Management
+
+= Ansible Tower/AWX for Enhanced Management
+
+Ansible Tower (now known as Automation Hub within Red Hat Ansible Automation Platform) and its open-source counterpart, AWX, are web-based tools that enhance Ansible's management capabilities. They provide a visual dashboard, REST API, and a robust UI to streamline automation tasks, making it easier for teams to collaborate, manage access control, schedule jobs, and monitor activities.
+
+## Architecture and Key Components
+
+### Automation Hub/Ansible Tower
+
+1. **Web Interface**: A user-friendly web interface allowing administrators to create and manage projects, credentials, and inventory, as well as visualize job runs and schedules.
+2. **API**: Provides a RESTful API for integrating with other tools or building custom interfaces.
+3. **Database**: Stores configuration data, user information, project details, and scheduling information.
+4. **Message Broker (AMQP)**: Facilitates communication between the Tower application server and Ansible automation nodes.
+5. **Automation Nodes**: Run playbooks and manage remote systems. These can be installed on separate machines or run directly within the same process as Tower.
+
+### AWX
+
+AWX is an open-source version of Ansible Tower, sharing most of its features but without a commercial support contract. It consists of:
+
+1. **Web Interface**: Similar to Automation Hub's interface, allowing users to manage their automation projects and tasks.
+2. **API**: Provides a RESTful API for integration with other tools or building custom interfaces.
+3. **Database**: Stores configuration data, user information, project details, and scheduling information.
+4. **Message Broker (AMQP)**: Similar to Tower, it facilitates communication between the AWX application server and automation nodes.
+5. **Automation Nodes**: Can be managed similarly to those in Automation Hub.
+
+## Key Benefits of Using Ansible Tower/AWX
+
+- **Centralized Management**: Provides a single pane of glass for managing multiple Ansible projects, users, and systems.
+- **Access Control**: Allows administrators to define granular permissions for users and teams, ensuring that only authorized individuals can perform specific actions.
+- **Scheduled Jobs**: Enables users to schedule playbook runs at specified times or intervals, making it easier to automate routine tasks.
+- **Job Scheduling and Monitoring**: Gives an overview of running, queued, and past job executions, along with detailed logs for debugging and troubleshooting.
+- **Integration Capabilities**: Offers extensive API support for integrating with existing tools in your IT ecosystem (e.g., CI/CD pipelines, ticketing systems).
+- **Enhanced Collaboration**: Facilitates team collaboration through shared projects, playbooks, and templates.
+
+## Hands-on Labs - Ansible Tower/AWX
+
+### Setting Up a Test Environment
+
+1. Install AWX on your local machine or a virtual environment using Docker:
+   ```bash
+   docker run -d --name awx -p 80:80 -p 443:443 -p 5000:5000 \
+     -e 'ANSIBLE_CALLBACKS=yaml' \
+     -e 'ANSIBLE_HOSTKEY_CHECKING=False' \
+     -e 'ANSIBLE_REMOTING_TRANSPORT=k shell' \
+     -e AWX_KEY=your_random_key \
+     automationhub/awx:latest
+   ```
+2. Access the AWX web interface (usually at `http://localhost/`) and log in with default credentials (`admin` / `password`).
+3. Change the admin password for security reasons.
+
+### Using Ansible Tower/AWX
+
+1. **Create a new Project**: In the AWX/Tower web interface, navigate to *Projects* > *Add*. Fill in the details like Name, Organization, and Description, then click *Save*.
+2. **Add Credentials**: Go to *Credentials* > *Add*, providing necessary details such as SSH Username, Password or Private Key, and System details. Save the credentials for later use in playbooks.
+3. **Manage Inventory**: Create or import an existing inventory using the *Inventories* section. You can use static inventories (simple INI files), dynamic inventories (using scripts to fetch data), or group your hosts into logical groups for easier management.
+4. **Create a Job Template**: Under *Templates*, select `Playbooks` and click *Add*. Specify a playbook from your project, set variables if necessary, and choose any relevant job settings (e.g., limit, diff mode). Save the template to use it for job executions.
+5. **Launch Jobs**: Use the web interface to start jobs based on your templates. Monitor progress and view logs within the Job View section.
+6. **Scheduling**: Schedule recurring jobs by navigating to *Schedules* > *Add*, selecting a template, setting desired frequency (e.g., daily, weekly), and specifying start time. Save the schedule to automate routine tasks without manual intervention.
+
+This content provides an overview of Ansible Tower/AWX for enhanced management, along with hands-on instructions to set up a test environment and perform basic operations. For more in-depth information, consult the official documentation: https://docs.ansible.com/ansible-tower/latest/html/index.html (for Automation Hub) and https://docs.awxghorg/en/stable/ (for AWX).

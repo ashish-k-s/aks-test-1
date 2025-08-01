@@ -1,0 +1,7 @@
+* xref:hands-on-labs.adoc[]
+** xref:setting-up-a-test-environment.adoc[]
+** xref:writing-simple-playbooks.adoc[]
+** xref:executing-ad-hoc-commands.adoc[]
+** xref:managing-inventory.adoc[]
+** xref:using-variables-and-templates.adoc[]
+** xref:implementing-control-flow.adoc[]

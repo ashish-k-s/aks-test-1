@@ -1,0 +1,47 @@
+#  Writing Simple Playbooks
+
+=== Writing Simple Playbooks
+
+Ansible playbooks are written in the YAML format and serve as a collection of plays. A play defines a set of tasks to be executed against a specific target or group of targets, often referred to as hosts. Here's how to write simple Ansible playbooks:
+
+1. **Playbook Structure**: A basic playbook consists of three main sections:
+   - *hosts*: Specifies the target hosts or groups of hosts where tasks will be executed.
+   - *gather_facts*: Controls whether Ansible gathers system facts about the managed nodes, which is often useful for dynamic inventory. Set it to `true` for most use cases (`gather_facts: false` can be used if you already have all required information).
+   - *tasks*: Lists the tasks to be executed on the targeted hosts.
+
+2. **Example Playbook**: Here's a simple playbook named `example.yml` demonstrating the structure and basic tasks:
+
+   ```yaml
+   ---
+   - name: Execute tasks against CentOS servers
+     hosts: centos_servers
+     gather_facts: yes
+     tasks:
+       - name: Ensure Apache is installed
+         package:
+           name: httpd
+           state: present
+
+       - name: Start the Apache service
+         service:
+           name: httpd
+           state: started
+   ```
+
+   In this example:
+   - The playbook is named `Execute tasks against CentOS servers`.
+   - It targets a group of hosts called `centos_servers` (ensure you have defined this group in your Ansible inventory).
+   - Facts are gathered from the targeted hosts.
+   - Two tasks are defined:
+     1. Ensuring Apache (`httpd`) is installed using the `package` module.
+     2. Starting the Apache service with the `service` module.
+
+3. **Running Playbooks**: Execute playbooks using the `ansible-playbook` command followed by the playbook file name:
+
+   ```bash
+   ansible-playbook example.yml
+   ```
+
+4. **Troubleshooting**: If you encounter issues while writing or running playbooks, check for syntax errors in your YAML files and ensure that modules used in tasks are correctly installed. Utilize Ansible's verbose output with `-vvv` for detailed logs during execution.
+
+By following these guidelines, you can create simple yet effective Ansible playbooks to automate routine administrative tasks across various systems. As you become more comfortable, you can explore additional features such as error handling, control flow, and roles for managing larger, modular projects.

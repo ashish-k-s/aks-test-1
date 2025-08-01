@@ -1,0 +1,61 @@
+#  Playbooks and Ad-hoc Commands
+
+= Ansible Basics
+
+  == Introduction to Ansible
+
+    == Playbooks and Ad-hoc Commands
+
+   In Ansible, tasks are typically grouped into playbooks, making it easier to manage and organize automation jobs. A playbook is a file containing one or more plays, where each play defines a set of tasks to be executed on managed nodes. This section will cover both playbooks and ad-hoc commands.
+
+   === Playbooks
+
+   *Structure*: A playbook consists of three main sections - hosts, variables, and tasks.
+
+   ```
+   - hosts: <managed_nodes>
+     vars:
+       <variable_name>: <value>
+     tasks:
+       - name: <task_description>
+         ansible.builtin.<module_name>: <parameters>
+   ```
+
+   *Example*: To ensure the `http` service is running on a set of web servers, create a playbook named `web_servers.yml`:
+
+   ```yaml
+   - hosts: webservers
+     become: yes
+     tasks:
+       - name: Ensure HTTP service is enabled and running
+         ansible.builtin.service:
+           name: http
+           state: started
+           enabled: yes
+   ```
+
+   In this example, the playbook targets the `webservers` group of managed nodes, uses privileged mode (`become: yes`), sets up variables (though not used in this case), and contains a single task to manage the HTTP service.
+
+   *Execution*: Execute the playbook using the `ansible-playbook` command followed by the path to your playbook file:
+
+   ```bash
+   ansible-playbook web_servers.yml
+   ```
+
+   === Ad-hoc Commands
+
+   For quick, one-off tasks or troubleshooting, Ansible provides ad-hoc commands executed via the `ansible` command directly. The basic syntax is as follows:
+
+   ```bash
+   ansible <managed_nodes> -m <module_name> -a "<parameters>"
+   ```
+
+   *Example*: To check the status of the `http` service on a single web server, use an ad-hoc command:
+
+   ```bash
+   ansible webserver.example.com -m service -a "name=http state=status"
+   ```
+
+   Ad-hoc commands can be combined with filters and logic operators for more complex tasks but are generally less structured and reusable than playbooks.
+
+   In summary, playbooks provide a more organized and maintainable approach to automating tasks across multiple hosts, while ad-hoc commands offer a quick solution for occasional or simple management needs in Ansible.

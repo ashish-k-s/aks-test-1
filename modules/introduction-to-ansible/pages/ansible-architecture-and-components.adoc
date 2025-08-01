@@ -1,0 +1,24 @@
+#  Ansible Architecture and Components
+
+= Ansible Architecture and Components
+
+Ansible, an open-source automation tool, is designed to simplify automation, reducing complexity when managing and deploying applications to multiple servers. Its architecture comprises several key components that work together seamlessly:
+
+1. **Ansible Control Node**: This is the machine from which you manage and automate other servers, often referred to as managed nodes or targets. The control node runs the Ansible software, including the command-line interface (CLI) and the API. It does not require any agents or additional software on the managed nodes.
+
+2. **Managed Nodes**: These are the servers or devices that Ansible automates. Managed nodes can be Linux or Windows machines, network devices, cloud instances, VMs, or containers. They only need Python (version 2.6 or later) installed, as Ansible uses SSH for communication and does not require any additional software.
+
+3. **Ansible Communication**: By default, Ansible communicates with managed nodes using the Secure Shell (SSH). This communication channel allows Ansible to execute tasks remotely on managed nodes without requiring pre-installed agents or complex configurations.
+
+4. **Ansible Playbooks**: Playbooks are Ansible's configuration, deployment, and orchestration language. Written in YAML format, playbooks describe a policy you want your remote systems to enforce. They enable you to automate routine tasks like application deployment, configuration management, and cloud provisioning, among others.
+
+   - A playbook consists of a list of plays, each defining a set of tasks to be executed on selected managed nodes.
+   - Tasks in a playbook can invoke Ansible modules (self-contained programs that perform specific functions) to carry out operations on managed nodes, like installing software packages or managing files.
+
+5. **Ansible Modules**: As mentioned earlier, modules are reusable, standalone scripts or programs that Ansible uses to interact with managed systems. There is a vast collection of built-in modules for various tasks (like package management, file manipulation, service control), and users can create custom modules to extend functionality.
+
+6. **Ansible Roles**: Roles help in organizing playbooks and related files, such as variables, templates, and handlers, making them modular and reusable. A role encapsulates a logical collection of tasks, handling, files, and other Ansible artifacts, promoting code reuse, maintainability, and clarity in complex automation projects.
+
+7. **Ansible Tower/AWX (Optional)**: While not part of the core Ansible architecture, Ansible Tower (now known as AWX when used as open-source) is a web-based solution that enhances Ansible's management capabilities with features like a visual dashboard, REST API, and a user interface for creating and managing projects, templates, and credentials.
+
+In summary, understanding Ansible's architecture and components lays the foundation for effectively leveraging this powerful automation tool. Its agentless design, playbooks, modules, roles, and optional web-based management tools contribute to simplifying complex system administration tasks across various environments.

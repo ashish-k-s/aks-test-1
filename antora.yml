@@ -1,10 +1,12 @@
-name: course-starter-template
-title: FIXME Course Title
+name: aks-test-1
+title:  Ansible Basics
 version: 1
 nav:
 - modules/ROOT/nav.adoc
 - modules/LABENV/nav.adoc
-- modules/chapter1/nav.adoc
-- modules/chapter2/nav.adoc
-- modules/chapter3/nav.adoc
+
+- modules/introduction-to-ansible/nav.adoc
+
+- modules/hands-on-labs/nav.adoc
+
 - modules/appendix/nav.adoc

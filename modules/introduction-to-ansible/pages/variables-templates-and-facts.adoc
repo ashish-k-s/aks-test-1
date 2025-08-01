@@ -1,0 +1,58 @@
+#  Variables, Templates, and Facts
+
+### Variables, Templates, and Facts
+
+Ansible utilizes variables, templates, and facts as essential components for managing configurations and data across managed nodes. These features provide flexibility, reusability, and context-aware processing, enabling efficient automation.
+
+#### Variables
+
+*Variables* in Ansible store dynamic data that can be used within playbooks to customize tasks and make them adaptable to different environments. They allow you to pass information from the control machine to managed nodes, facilitating configuration management tailored to specific requirements.
+
+**Types of Variables:**
+1. **Facts**: These are pre-defined variables representing system-specific information like OS details, network configurations, or package managers. Facts come in two varieties:
+   - *Built-in Facts*: Available by default (e.g., `ansible_hostname`, `ansible_kernel`).
+   - *Custom Facts*: Created and loaded using plugins to extend built-in facts with additional system-specific information.
+2. **Variables**: User-defined variables that can be set in inventory files, group variables, or within playbooks. They hold dynamic data like IP addresses, usernames, or paths that might change across different environments.
+
+**Using Variables:**
+To utilize variables, reference them using the `{{ variable_name }}` syntax within tasks and templates.
+
+#### Templates
+
+*Templates* are files containing placeholders for dynamic content, enabling you to generate customized configuration files based on variable values. They ensure consistent configurations across multiple nodes while allowing for customization as needed.
+
+**Template Syntax:**
+Ansible uses the Jinja2 template engine, which supports various control structures and filters. Placeholder syntax includes:
+- `{{ variable_name }}`: Inserts variable values.
+- `# set` or `with_*:`: Conditional statements to include or exclude content based on conditions.
+- `{% for item in sequence %}...{% endfor %}`: Looping constructs to iterate over sequences.
+
+**Example:**
+```yaml
+---
+- name: Create a custom SSH config file
+  template:
+    src: templates/sshd_config.j2
+    dest: /etc/ssh/sshd_config
+```
+In this example, `sshd_config.j2` is a Jinja2 template with placeholders for variable values (e.g., `{{ sshd_port }}`) that will be replaced during the execution of the task, generating a customized SSH configuration file.
+
+#### Facts
+
+*Facts* are crucial for gathering system-specific information and using it within playbooks. They enable conditional logic and dynamic decision-making based on the target node's characteristics.
+
+**Accessing Facts:**
+To access facts within a playbook, use the `ansible_facts` dictionary. This dictionary contains various keys corresponding to different categories of facts (e.g., `ansible_os_family`, `ansible_env`).
+
+**Example:**
+```yaml
+- name: Check for a specific OS family
+  debug:
+    msg: "Running on {{ ansible_os_family }}"
+  when: "'Debian' in ansible_os_family' or 'RedHat' in ansible_os_family'"
+```
+In this snippet, the playbook checks if the managed node belongs to either Debian-based (e.g., Ubuntu) or Red Hat-based (e.g., CentOS) families using `ansible_os_family` fact and executes a debug message accordingly.
+
+### Summary
+
+Variables, templates, and facts are indispensable features of Ansible that empower users to manage configurations dynamically, generate tailored outputs, and make informed decisions based on system characteristics. Mastering these concepts will enable you to create robust, flexible, and context-aware automation solutions.

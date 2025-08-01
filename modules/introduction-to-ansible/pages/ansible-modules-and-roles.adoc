@@ -1,0 +1,62 @@
+#  Ansible Modules and Roles
+
+**Ansible Modules and Roles**
+
+Ansible modules are reusable components that perform specific tasks on managed nodes. They represent the highest level of abstraction in Ansible, enabling you to manage systems in a declarative way. Each module is a small, standalone program written in any language that can be executed over SSH. This design allows for easy extension and customization.
+
+*Table 1. Categories of Ansible Modules*
+
+| Category         | Description                                                                   | Example                       |
+|-------------------------------------------------------------------------------------------------|-------------------------------|
+| Core modules     | Built-in modules to manage users, files, services, etc.                        | `community.general.user`       |
+| System modules   | Manage system-level tasks such as package installation and service control    | `ansible.builtin.apt`          |
+| Network modules  | Handle network-related activities like firewall configuration and port forwarding| `community.network.iptables`   |
+
+To utilize a module, you include it in a playbook under the `tasks` section along with any required parameters. For instance, to ensure the Apache service is running on managed nodes, you could use the `service` module as follows:
+
+```yaml
+- name: Ensure Apache is running
+  ansible.builtin.service:
+    name: apache2
+    state: started
+```
+
+**Roles in Ansible**
+
+Roles are a way to organize related Ansible components such as tasks, handlers, files, templates, and variables into logical working units. This promotes reusability, readability, and maintainability of your playbooks by grouping them according to their function or purpose.
+
+*Key Components of Roles:*
+
+1. **tasks**: A directory containing .yml files with tasks that Ansible will execute on managed nodes.
+2. **handlers**: Similar to tasks, but used for executing specific actions in response to events (e.g., a service change).
+3. **files/directories**: Any required static files or directories to be copied over to managed nodes.
+4. **templates**: Jinja2 templates to generate dynamic configuration files for deployment.
+5. **defaults**: A file containing default variables for the role.
+6. **vars**: An optional directory for additional variables specific to a particular environment.
+7. **meta**: A file that can contain metadata about the role, such as defining compatibility with Ansible versions.
+
+Creating a role named `my_web_server` might include the following structure:
+
+```
+my_web_server/
+├── tasks
+│   └── main.yml
+├── handlers
+│   └── main.yml
+├── files
+│   └── index.html
+├── templates
+│   └── index.html.j2
+└── defaults
+    └── main.yml
+```
+
+In the playbook, you would then reference this role and its tasks:
+
+```yaml
+- hosts: web_servers
+  roles:
+    - my_web_server
+```
+
+With this structure in place, Ansible will execute tasks defined within `my_web_server/tasks/main.yml`, manage handlers in `my_web_server/handlers/main.yml`, and handle any required files or templates efficiently.

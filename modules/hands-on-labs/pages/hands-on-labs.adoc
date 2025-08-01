@@ -1,0 +1,11 @@
+#  Hands-on Labs
+
+= Hands-on Labs
+
+   - This section focuses on practical application of Ansible concepts through lab exercises.
+   - Users will learn to set up a test environment for practicing Ansible tasks.
+   - Participants will write simple playbooks, enabling them to automate system configurations.
+   - Executing ad-hoc commands is covered, demonstrating quick, one-off task automation.
+   - Managing inventory, a crucial aspect of Ansible, is explored through hands-on activities.
+   - Utilizing variables and templates in playbooks is demonstrated for dynamic configuration management.
+   - Implementing control flow constructs like 'when', 'with_items', and 'loop' is practiced to create flexible playbooks.

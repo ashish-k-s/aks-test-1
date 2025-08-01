@@ -1,0 +1,93 @@
+#  Implementing Control Flow
+
+== Implementing Control Flow
+
+Ansible playbooks are powerful for automating tasks but often require decision-making capabilities based on conditions. Ansible's control flow features provide the means to manage complex automation tasks by controlling the execution of tasks, handling loops, and applying conditionals. This section will explore these essential control flow components: when, when_except, when_role, and when_serial.
+
+= When (Conditional Execution)
+
+The `when` condition allows you to execute a task only if a specified condition is true. You can use various operators such as equals (=), not equals (!=), greater than (>), less than (<), etc., to create conditions based on facts, variables, or command outputs.
+
+```yaml
+- name: Print message when OS is CentOS
+  debug:
+    msg: "You are running a CentOS system."
+  when: ansible_distribution == "CentOS"
+```
+
+= When_except (Conditional Execution Exclusion)
+
+The `when_except` condition works similarly to the `when` condition but executes a task only if the specified condition is false.
+
+```yaml
+- name: Print message unless OS is CentOS
+  debug:
+    msg: "This will run on non-CentOS systems."
+  when_except: ansible_distribution == "CentOS"
+```
+
+= When_role (Task Execution Based on Role)
+
+The `when_role` condition allows you to execute tasks depending on the current role. This is particularly useful for role-specific tasks or configurations.
+
+```yaml
+- name: Execute role-specific task
+  debug:
+    msg: "This task will run when the 'common' role is active."
+  when_role: common
+```
+
+= When_serial (Serial Execution of Tasks)
+
+By default, Ansible executes tasks in parallel unless specified otherwise. The `when_serial` condition forces a task to execute sequentially, one after another, regardless of the number of hosts or their grouping.
+
+```yaml
+- name: Install package on each host sequentially
+  yum:
+    name: httpd
+    state: present
+  when_serial: 10
+```
+
+Hands-on Lab Activity: Implementing Control Flow
+
+In this hands-on activity, you will create a playbook that demonstrates the use of control flow components. Follow these steps to set up and complete the lab:
+
+1. **Set Up Your Test Environment**: Ensure you have a test environment with multiple hosts (e.g., virtual machines or containers) running different operating systems.
+
+2. **Create a Playbook File**: Create an Ansible playbook file, e.g., `control_flow_demo.yml`, and add the following content:
+
+```yaml
+---
+- hosts: all
+  become: yes
+
+  - name: Install Apache (CentOS only)
+    yum:
+      name: httpd
+      state: present
+    when: ansible_distribution == "CentOS"
+
+  - name: Install Nginx (non-CentOS only)
+    apt:
+      name: nginx
+      state: present
+    when_except: ansible_distribution == "CentOS"
+
+  - name: Print role-specific message
+    debug:
+      msg: "Running within the 'common' role."
+    when_role: common
+
+  - name: Execute tasks serially
+    yum:
+      name: vim
+      state: present
+    when_serial: 5
+```
+
+3. **Execute Your Playbook**: Run your playbook against your test environment, ensuring it applies control flow as defined in the playbook.
+
+4. **Observe and Analyze Results**: Carefully examine the playbook's output to understand how each control flow component managed task execution on different hosts and under varying conditions.
+
+By completing this hands-on lab activity, you will gain practical experience in implementing control flow within Ansible playbooks, making your automation tasks more flexible and adaptable.
