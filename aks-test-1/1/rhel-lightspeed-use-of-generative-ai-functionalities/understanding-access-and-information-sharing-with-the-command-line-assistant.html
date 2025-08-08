@@ -3,7 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Playbooks Basics :: RHEL Lightspeed Overview</title>
+    <title>Understanding access and information sharing with the command-line assistant :: RHEL Lightspeed Overview</title>
+    <link rel="prev" href="utilization-of-watsonx-ai-api-llm-large-language-model-as-a-saas-external-infrastructure.html">
+    <link rel="next" href="../rhel-lifecycle-support-and-policies/rhel-lifecycle-support-and-policies.html">
     <meta name="generator" content="Antora 3.1.3">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <script>var uiRootPath = '../../../_'</script>
@@ -91,13 +93,13 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../rhel-lightspeed-use-of-generative-ai-functionalities/rhel-lightspeed-use-of-generative-ai-functionalities.html">RHEL Lightspeed Use of Generative AI Functionalities</a>
+    <a class="nav-link" href="rhel-lightspeed-use-of-generative-ai-functionalities.html">RHEL Lightspeed Use of Generative AI Functionalities</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../rhel-lightspeed-use-of-generative-ai-functionalities/utilization-of-watsonx-ai-api-llm-large-language-model-as-a-saas-external-infrastructure.html">Utilization of WatsonX AI API LLM (Large Language Model) as a SaaS external infrastructure</a>
+    <a class="nav-link" href="utilization-of-watsonx-ai-api-llm-large-language-model-as-a-saas-external-infrastructure.html">Utilization of WatsonX AI API LLM (Large Language Model) as a SaaS external infrastructure</a>
   </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../rhel-lightspeed-use-of-generative-ai-functionalities/understanding-access-and-information-sharing-with-the-command-line-assistant.html">Understanding access and information sharing with the command-line assistant</a>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="understanding-access-and-information-sharing-with-the-command-line-assistant.html">Understanding access and information sharing with the command-line assistant</a>
   </li>
 </ul>
   </li>
@@ -155,7 +157,8 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">RHEL Lightspeed Overview</a></li>
-    <li><a href="playbooks-basics.html">Playbooks Basics</a></li>
+    <li><a href="rhel-lightspeed-use-of-generative-ai-functionalities.html">RHEL Lightspeed Use of Generative AI Functionalities</a></li>
+    <li><a href="understanding-access-and-information-sharing-with-the-command-line-assistant.html">Understanding access and information sharing with the command-line assistant</a></li>
   </ul>
 </nav>
 </div>
@@ -164,27 +167,73 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Playbooks Basics</h1>
-<h1 id="_playbooks_basics" class="sect0"><a class="anchor" href="#_playbooks_basics"></a>Playbooks Basics</h1>
+<h1 class="page">Understanding access and information sharing with the command-line assistant</h1>
+<div class="sect1">
+<h2 id="_understanding_access_and_information_sharing_with_the_command_line_assistant"><a class="anchor" href="#_understanding_access_and_information_sharing_with_the_command_line_assistant"></a>Understanding Access and Information Sharing with the Command-Line Assistant</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The command-line assistant powered by RHEL Lightspeed is designed to provide assistance without directly accessing sensitive system data, aligning with user privacy and security best practices. Here&#8217;s how access and information sharing work within this framework:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Indirect Information Access</strong>: The command-line assistant does not directly access your system&#8217;s information. For instance, if you ask for memory usage details, the assistant cannot retrieve it from your system but instead guides you on executing a relevant command (e.g., <code>free -h</code>) to obtain this data yourself.</p>
+</li>
+<li>
+<p><strong>Input Methods</strong>: To ensure users can provide necessary context without exposing sensitive information, several methods are available:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Understand playbook syntax and structure: Learn about the fundamental elements of Ansible playbooks, including tasks, handlers, roles, and variables.</p>
+<p><strong>Prompt or Question Inclusion</strong>: Users directly include required details in their queries.</p>
 </li>
 <li>
-<p>Write simple playbooks: Get hands-on experience creating playbooks for basic system administration tasks such as package installation, file management, and service control.</p>
+<p><strong>File Attachment</strong>: Using the <code>--attachment</code> option, users can upload relevant files without sharing them over the network.</p>
 </li>
 <li>
-<p>Explore playbook modules: Familiarize yourself with built-in modules that perform various actions on managed nodes, enabling automation of common IT tasks.</p>
-</li>
-<li>
-<p>Utilize templates and include files: Discover how to reuse code and organize complex playbooks using template syntax and including external files for better maintainability.</p>
-</li>
-<li>
-<p>Implement error handling and debugging strategies: Learn techniques to manage failures, troubleshoot issues, and ensure reliable execution of your Ansible playbooks.</p>
+<p><strong>Shell Pipeline</strong>: Utilizing the <code>--with-output</code> option, users can pass command output to the assistant for contextual assistance.</p>
 </li>
 </ul>
 </div>
+</li>
+<li>
+<p><strong>Data Flow Process</strong>: The interaction between user and the command-line assistant follows a secure process flow:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Input Reception (1)</strong>: The command-line assistant receives the user&#8217;s query and any associated data or instructions.</p>
+</li>
+<li>
+<p><strong>Logging and Storing Conversations</strong>: Complete chat transcripts, including queries and responses, are stored locally for user reference and potentially sent to Red Hat for service improvements. These logs do not include personal information per the design principle of the command-line assistant.</p>
+</li>
+<li>
+<p><strong>Backend Processing (2)</strong>: The input is processed by the backend system to prepare it for AI inference.</p>
+</li>
+<li>
+<p><strong>Knowledge Retrieval (3)</strong>: The assistant searches its knowledge base, which includes system documentation and relevant instructions, to find pertinent information related to the user&#8217;s query.</p>
+</li>
+<li>
+<p><strong>AI Inference (4)</strong>: The gathered data, along with user-provided context, is sent to the configured Large Language Model (LLM) provider for processing and generating a response.</p>
+</li>
+<li>
+<p><strong>Output Generation (5)</strong>: Finally, the assistant delivers its AI-generated output as a response to the user.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Privacy Commitment</strong>: The design of the command-line assistant emphasizes not collecting or processing personal information. Users are expected to refrain from sharing such data intentionally. Local logs of interactions provide users access to their chat history while ensuring that Red Hat can use this aggregated, anonymized data for enhancing products and services.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>By maintaining a clear separation between user systems and the AI-powered command-line assistant, RHEL Lightspeed ensures secure and privacy-conscious assistance, offering valuable support without compromising sensitive information.</p>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="utilization-of-watsonx-ai-api-llm-large-language-model-as-a-saas-external-infrastructure.html">Utilization of WatsonX AI API LLM (Large Language Model) as a SaaS external infrastructure</a></span>
+  <span class="next"><a href="../rhel-lifecycle-support-and-policies/rhel-lifecycle-support-and-policies.html">RHEL Lifecycle Support and Policies</a></span>
+</nav>
 </article>
   </div>
 </main>

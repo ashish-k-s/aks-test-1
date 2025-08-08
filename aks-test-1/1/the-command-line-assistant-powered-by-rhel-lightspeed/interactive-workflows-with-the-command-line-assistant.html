@@ -3,7 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Playbooks Basics :: RHEL Lightspeed Overview</title>
+    <title>Interactive workflows with the command-line assistant :: RHEL Lightspeed Overview</title>
+    <link rel="prev" href="the-command-line-assistant-powered-by-rhel-lightspeed.html">
+    <link rel="next" href="using-the-assistant-for-troubleshooting-log-files-interpretation-and-recommendations.html">
     <meta name="generator" content="Antora 3.1.3">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <script>var uiRootPath = '../../../_'</script>
@@ -69,19 +71,19 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../the-command-line-assistant-powered-by-rhel-lightspeed/the-command-line-assistant-powered-by-rhel-lightspeed.html">The Command-Line Assistant Powered by RHEL Lightspeed</a>
+    <a class="nav-link" href="the-command-line-assistant-powered-by-rhel-lightspeed.html">The Command-Line Assistant Powered by RHEL Lightspeed</a>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../the-command-line-assistant-powered-by-rhel-lightspeed/interactive-workflows-with-the-command-line-assistant.html">Interactive workflows with the command-line assistant</a>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="interactive-workflows-with-the-command-line-assistant.html">Interactive workflows with the command-line assistant</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../the-command-line-assistant-powered-by-rhel-lightspeed/using-the-assistant-for-troubleshooting-log-files-interpretation-and-recommendations.html">Using the assistant for troubleshooting, log files interpretation, and recommendations</a>
+    <a class="nav-link" href="using-the-assistant-for-troubleshooting-log-files-interpretation-and-recommendations.html">Using the assistant for troubleshooting, log files interpretation, and recommendations</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../the-command-line-assistant-powered-by-rhel-lightspeed/limitations-of-the-command-line-assistant.html">Limitations of the command-line assistant</a>
+    <a class="nav-link" href="limitations-of-the-command-line-assistant.html">Limitations of the command-line assistant</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../the-command-line-assistant-powered-by-rhel-lightspeed/proxying-rhel-system-requests-through-an-internet-connected-single-proxy-system.html">Proxying RHEL system requests through an internet-connected single proxy system</a>
+    <a class="nav-link" href="proxying-rhel-system-requests-through-an-internet-connected-single-proxy-system.html">Proxying RHEL system requests through an internet-connected single proxy system</a>
   </li>
 </ul>
   </li>
@@ -155,7 +157,8 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">RHEL Lightspeed Overview</a></li>
-    <li><a href="playbooks-basics.html">Playbooks Basics</a></li>
+    <li><a href="the-command-line-assistant-powered-by-rhel-lightspeed.html">The Command-Line Assistant Powered by RHEL Lightspeed</a></li>
+    <li><a href="interactive-workflows-with-the-command-line-assistant.html">Interactive workflows with the command-line assistant</a></li>
   </ul>
 </nav>
 </div>
@@ -164,27 +167,129 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Playbooks Basics</h1>
-<h1 id="_playbooks_basics" class="sect0"><a class="anchor" href="#_playbooks_basics"></a>Playbooks Basics</h1>
+<h1 class="page">Interactive workflows with the command-line assistant</h1>
+<div class="sect1">
+<h2 id="_interactive_workflows_with_the_command_line_assistant_powered_by_rhel_lightspeed"><a class="anchor" href="#_interactive_workflows_with_the_command_line_assistant_powered_by_rhel_lightspeed"></a>Interactive Workflows with the Command-Line Assistant Powered by RHEL Lightspeed</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The command-line assistant powered by RHEL Lightspeed enables interactive workflows, simplifying complex tasks and providing expert guidance for various use cases such as troubleshooting, log files interpretation, and recommendations. Here&#8217;s how to effectively engage in these interactive sessions:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Starting an Interaction</strong></p>
+<div class="literalblock">
+<div class="content">
+<pre>To initiate a conversation with the command-line assistant, simply type your question or concern in plain language. You don't need to use specific commands or syntax as you would in a standard command-line interface. For example:</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>```
+[user@rhel_system ~]$ What are the common causes for the 'Unable to open /dev/kvm (Permission denied)' error?
+```</pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Utilizing Transcripts</strong></p>
+<div class="literalblock">
+<div class="content">
+<pre>The command-line assistant logs and stores complete transcripts of conversations, which helps in tracking previous discussions and ensuring continuity. These transcripts include:</pre>
+</div>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Understand playbook syntax and structure: Learn about the fundamental elements of Ansible playbooks, including tasks, handlers, roles, and variables.</p>
+<p>User queries</p>
 </li>
 <li>
-<p>Write simple playbooks: Get hands-on experience creating playbooks for basic system administration tasks such as package installation, file management, and service control.</p>
+<p>Complete messages sent to the configured Large Language Model (LLM) provider with additional context like system instructions and referenced documentation</p>
 </li>
 <li>
-<p>Explore playbook modules: Familiarize yourself with built-in modules that perform various actions on managed nodes, enabling automation of common IT tasks.</p>
-</li>
-<li>
-<p>Utilize templates and include files: Discover how to reuse code and organize complex playbooks using template syntax and including external files for better maintainability.</p>
-</li>
-<li>
-<p>Implement error handling and debugging strategies: Learn techniques to manage failures, troubleshoot issues, and ensure reliable execution of your Ansible playbooks.</p>
+<p>Responses from the LLM provider</p>
+<div class="literalblock">
+<div class="content">
+<pre>You can review these transcripts to revisit past interactions and gain further insights.</pre>
+</div>
+</div>
 </li>
 </ul>
 </div>
+</li>
+<li>
+<p><strong>AI Inference Process</strong></p>
+<div class="literalblock">
+<div class="content">
+<pre>When you provide an input, the following steps occur in the background for processing:</pre>
+</div>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>The command-line assistant sends your query along with contextual information to the configured LLM provider (e.g., WatsonX AI API LLM).</p>
+</li>
+<li>
+<p>The backend processes the input and searches for relevant knowledge related to your query.</p>
+</li>
+<li>
+<p>The command-line assistant combines your query, relevant knowledge, and system instructions to perform AI inference using the chosen LLM.</p>
+</li>
+<li>
+<p>Finally, you receive an output or response from the assistant as a result of this inference process.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><strong>Troubleshooting and Log Files Interpretation</strong></p>
+<div class="literalblock">
+<div class="content">
+<pre>With the command-line assistant, you can effectively interpret complex log files and gain recommendations for troubleshooting issues. For instance:</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>```
+[user@rhel_system ~]$ Can you help me understand the errors in /var/log/messages?
+```</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>The assistant will analyze the log files, identify potential problems, and provide suggestions or guidance to address those issues.</pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Limitations</strong></p>
+<div class="literalblock">
+<div class="content">
+<pre>Although powerful, the command-line assistant has certain limitations:</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>It doesn&#8217;t require direct internet connectivity on RHEL systems; however, it relies on a single proxy system for external access when needed.</p>
+</li>
+<li>
+<p>While it strives for accuracy, the assistant&#8217;s responses are based on its training data and may not cover every edge case or highly specialized scenarios.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>By engaging in interactive workflows with the command-line assistant powered by RHEL Lightspeed, users can leverage AI-driven expertise to manage, configure, and troubleshoot Red Hat Enterprise Linux systems more efficiently.</p>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="the-command-line-assistant-powered-by-rhel-lightspeed.html">The Command-Line Assistant Powered by RHEL Lightspeed</a></span>
+  <span class="next"><a href="using-the-assistant-for-troubleshooting-log-files-interpretation-and-recommendations.html">Using the assistant for troubleshooting, log files interpretation, and recommendations</a></span>
+</nav>
 </article>
   </div>
 </main>

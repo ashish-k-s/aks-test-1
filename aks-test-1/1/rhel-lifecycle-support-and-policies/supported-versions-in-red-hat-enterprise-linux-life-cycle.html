@@ -3,7 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Playbooks Basics :: RHEL Lightspeed Overview</title>
+    <title>Supported versions in Red Hat Enterprise Linux Life Cycle :: RHEL Lightspeed Overview</title>
+    <link rel="prev" href="rhel-lifecycle-support-and-policies.html">
+    <link rel="next" href="associated-policies-for-rhel-lightspeed-use.html">
     <meta name="generator" content="Antora 3.1.3">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <script>var uiRootPath = '../../../_'</script>
@@ -107,13 +109,13 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../rhel-lifecycle-support-and-policies/rhel-lifecycle-support-and-policies.html">RHEL Lifecycle Support and Policies</a>
+    <a class="nav-link" href="rhel-lifecycle-support-and-policies.html">RHEL Lifecycle Support and Policies</a>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../rhel-lifecycle-support-and-policies/supported-versions-in-red-hat-enterprise-linux-life-cycle.html">Supported versions in Red Hat Enterprise Linux Life Cycle</a>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="supported-versions-in-red-hat-enterprise-linux-life-cycle.html">Supported versions in Red Hat Enterprise Linux Life Cycle</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../rhel-lifecycle-support-and-policies/associated-policies-for-rhel-lightspeed-use.html">Associated policies for RHEL Lightspeed use</a>
+    <a class="nav-link" href="associated-policies-for-rhel-lightspeed-use.html">Associated policies for RHEL Lightspeed use</a>
   </li>
 </ul>
   </li>
@@ -155,7 +157,8 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">RHEL Lightspeed Overview</a></li>
-    <li><a href="playbooks-basics.html">Playbooks Basics</a></li>
+    <li><a href="rhel-lifecycle-support-and-policies.html">RHEL Lifecycle Support and Policies</a></li>
+    <li><a href="supported-versions-in-red-hat-enterprise-linux-life-cycle.html">Supported versions in Red Hat Enterprise Linux Life Cycle</a></li>
   </ul>
 </nav>
 </div>
@@ -164,27 +167,105 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Playbooks Basics</h1>
-<h1 id="_playbooks_basics" class="sect0"><a class="anchor" href="#_playbooks_basics"></a>Playbooks Basics</h1>
+<h1 class="page">Supported versions in Red Hat Enterprise Linux Life Cycle</h1>
+<h1 id="_rhel_lightspeed_overview" class="sect0"><a class="anchor" href="#_rhel_lightspeed_overview"></a>RHEL Lightspeed Overview</h1>
+<div class="sect1">
+<h2 id="_rhel_lifecycle_support_and_policies"><a class="anchor" href="#_rhel_lifecycle_support_and_policies"></a>RHEL Lifecycle Support and Policies</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Red Hat Enterprise Linux (RHEL) follows a defined lifecycle with specific phases that determine support, updates, and end-of-life (EOL) dates for each version. Understanding this lifecycle is crucial when planning deployments and ensuring ongoing support for your systems. RHEL Lightspeed, as an integrated solution, adheres to these policies to provide optimal support throughout the RHEL lifecycle.</p>
+</div>
+<div class="sect2">
+<h3 id="_supported_versions_in_red_hat_enterprise_linux_life_cycle"><a class="anchor" href="#_supported_versions_in_red_hat_enterprise_linux_life_cycle"></a>Supported Versions in Red Hat Enterprise Linux Life Cycle</h3>
+<div class="paragraph">
+<p>RHEL versions go through several stages during their lifecycle:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Development Phase (Pre-release)</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Understand playbook syntax and structure: Learn about the fundamental elements of Ansible playbooks, including tasks, handlers, roles, and variables.</p>
-</li>
-<li>
-<p>Write simple playbooks: Get hands-on experience creating playbooks for basic system administration tasks such as package installation, file management, and service control.</p>
-</li>
-<li>
-<p>Explore playbook modules: Familiarize yourself with built-in modules that perform various actions on managed nodes, enabling automation of common IT tasks.</p>
-</li>
-<li>
-<p>Utilize templates and include files: Discover how to reuse code and organize complex playbooks using template syntax and including external files for better maintainability.</p>
-</li>
-<li>
-<p>Implement error handling and debugging strategies: Learn techniques to manage failures, troubleshoot issues, and ensure reliable execution of your Ansible playbooks.</p>
+<p>During this phase, new features and improvements are developed and tested internally by Red Hat engineers. This period is not considered a supported phase for production deployments.</p>
 </li>
 </ul>
 </div>
+</li>
+<li>
+<p><strong>General Availability (GA)</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Once a version reaches General Availability, it is officially released for customer use in production environments. Support includes bug fixes, security patches, and limited enhancements.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Maintenance Phase</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>After the GA phase, RHEL versions enter a Maintenance phase where only critical bug fixes and security updates are provided. This phase aims to ensure stability and reliability for customers using the version in production.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Extended Update Support (EUS)</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>For select versions, Red Hat offers Extended Update Support, which provides extended maintenance support beyond the standard Maintenance phase. EUS is designed for mission-critical environments where longer update windows are required.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>End of Life (EOL)</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>At the end of its lifecycle, a RHEL version reaches End-of-Life (EOL). No further updates, including security patches or bug fixes, are provided after this date. Red Hat recommends upgrading to a supported version for continued support and stability.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_associated_policies_for_rhel_lightspeed_use"><a class="anchor" href="#_associated_policies_for_rhel_lightspeed_use"></a>Associated Policies for RHEL Lightspeed Use</h3>
+<div class="paragraph">
+<p>RHEL Lightspeed is designed to work seamlessly with the lifecycle policies of RHEL:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Support Periods</strong>: RHEL Lightspeed supports only the versions currently in General Availability or Extended Update Support phases, ensuring access to the latest features and security updates.</p>
+</li>
+<li>
+<p><strong>EOL Management</strong>: Systems reaching End-of-Life are not supported by RHEL Lightspeed. Organizations must plan for timely upgrades to newer supported versions to maintain optimal performance and security.</p>
+</li>
+<li>
+<p><strong>Upgrade Paths</strong>: Red Hat provides clear upgrade paths between major RHEL versions, allowing customers to transition smoothly when older versions reach EOL. RHEL Lightspeed remains compatible with these established migration procedures.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_conclusion"><a class="anchor" href="#_conclusion"></a>Conclusion</h3>
+<div class="paragraph">
+<p>Understanding the RHEL lifecycle and associated policies is essential for successful RHEL Lightspeed implementation and management. By aligning with Red Hat&#8217;s lifecycle policies, organizations can effectively leverage RHEL Lightspeed&#8217;s AI-driven capabilities while ensuring ongoing system stability, security, and support throughout their RHEL deployments.</p>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="rhel-lifecycle-support-and-policies.html">RHEL Lifecycle Support and Policies</a></span>
+  <span class="next"><a href="associated-policies-for-rhel-lightspeed-use.html">Associated policies for RHEL Lightspeed use</a></span>
+</nav>
 </article>
   </div>
 </main>
