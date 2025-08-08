@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Ansible control nodes and managed nodes :: Ansible Basics</title>
+    <link rel="prev" href="ansible-architecture.html">
+    <link rel="next" href="communication-between-nodes-using-ssh-or-winrm.html">
+    <meta name="generator" content="Antora 3.1.3">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://www.redhat.com" target="_blank"><img src="../../../_/img/redhat-logo.png" height="40px" alt="Red Hat"></a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="../../..">Ansible Basics</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://github.com/RedHatQuickCourses/REPLACEREPONAME/issues" target="_blank">Report Issues</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="aks-test-1" data-version="1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Ansible Basics</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Home</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../LABENV/index.html">Lab Environment</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../introduction-to-ansible/introduction-to-ansible.html">Introduction to Ansible</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/what-is-ansible-and-its-use-cases.html">What is Ansible and its use cases</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/installing-and-configuring-ansible.html">Installing and configuring Ansible</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="ansible-architecture.html">Ansible Architecture</a>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="ansible-control-nodes-and-managed-nodes.html">Ansible control nodes and managed nodes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="communication-between-nodes-using-ssh-or-winrm.html">Communication between nodes using SSH or WinRM</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../playbooks-basics/playbooks-basics.html">Playbooks Basics</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../playbooks-basics/understanding-playbook-syntax-and-structure.html">Understanding playbook syntax and structure</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../playbooks-basics/writing-simple-playbooks-for-basic-tasks.html">Writing simple playbooks for basic tasks</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../hands-on-lab/hands-on-lab.html">Hands-on Lab</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../hands-on-lab/setting-up-a-lab-environment-for-practice.html">Setting up a lab environment for practice</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../hands-on-lab/executing-playbooks-on-the-lab-setup.html">Executing playbooks on the lab setup</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../hands-on-lab/analyzing-results-and-debugging-failures.html">Analyzing results and debugging failures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../appendix/appendix.html">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Ansible Basics</span>
+    <span class="version">1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">Ansible Basics</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Ansible Basics</a></li>
+    <li><a href="ansible-architecture.html">Ansible Architecture</a></li>
+    <li><a href="ansible-control-nodes-and-managed-nodes.html">Ansible control nodes and managed nodes</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Ansible control nodes and managed nodes</h1>
+<h1 id="_ansible_control_nodes_and_managed_nodes" class="sect0"><a class="anchor" href="#_ansible_control_nodes_and_managed_nodes"></a>Ansible Control Nodes and Managed Nodes</h1>
+<div class="paragraph">
+<p>Ansible operates on a client-server model where one or more servers, known as <strong>control nodes</strong>, manage one or more clients, referred to as <strong>managed nodes</strong>. This architecture allows for efficient automation of configuration management, deployment, and orchestration tasks across an entire IT infrastructure.</p>
+</div>
+<div class="sect1">
+<h2 id="_control_nodes"><a class="anchor" href="#_control_nodes"></a>Control Nodes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A control node is the central hub in an Ansible environment. It runs the Ansible software and manages communication with managed nodes. Typically, a control node is a dedicated server or a virtual machine where administrators execute Ansible commands to automate tasks on remote systems. Key characteristics of control nodes include:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Ansible Installation</strong>: The control node must have Ansible installed and properly configured. This enables it to understand and interpret playbooks written in YAML format.</p>
+</li>
+<li>
+<p><strong>Inventory Management</strong>: Control nodes maintain an inventory file, which is a list of managed nodes grouped logically for easier management. This file can be static (defined within the Ansible project) or dynamic (generated from external sources like cloud providers).</p>
+</li>
+<li>
+<p><strong>Connection Broker</strong>: Control nodes act as connection brokers, utilizing various connection plugins to establish secure communication channels with managed nodes using protocols such as SSH (for Linux/Unix systems) or WinRM (for Windows systems).</p>
+</li>
+<li>
+<p><strong>Playbook Execution</strong>: Control nodes execute playbooks, translating high-level tasks into low-level operations that are then carried out on the managed nodes.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_managed_nodes"><a class="anchor" href="#_managed_nodes"></a>Managed Nodes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Managed nodes are the target systems in an Ansible environment that receive and execute automated tasks from control nodes. These can be physical or virtual machines, containers, cloud instances, network devices, and more. Key characteristics of managed nodes include:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Ansible Agent (Ansible Connection)</strong>: Managed nodes require an Ansible agent or connection plugin to facilitate communication with the control node. This ensures that tasks are executed accurately as per the instructions provided in playbooks.</p>
+</li>
+<li>
+<p><strong>Inventory Registration</strong>: Managed nodes should be registered and properly listed in the control node&#8217;s inventory file, allowing for efficient targeting during playbook execution.</p>
+</li>
+<li>
+<p><strong>Task Execution</strong>: Upon receiving instructions from the control node, managed nodes execute tasks locally. This could involve installing packages, configuring services, or managing files, depending on the playbook&#8217;s requirements.</p>
+</li>
+<li>
+<p><strong>Idempotency</strong>: Managed nodes employ idempotency to ensure that repeated task executions do not cause unintended changes, thus maintaining the desired system state.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>In summary, understanding Ansible control nodes and managed nodes is crucial for grasping the fundamental architecture of an Ansible environment. Control nodes act as centralized management hubs while managed nodes are the target systems that receive automated tasks. This client-server model empowers administrators to efficiently manage complex IT infrastructures through playbooks, ensuring consistency and reducing manual errors.</p>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="ansible-architecture.html">Ansible Architecture</a></span>
+  <span class="next"><a href="communication-between-nodes-using-ssh-or-winrm.html">Communication between nodes using SSH or WinRM</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <img src="../../../_/img/rhl-logo-red.png" height="40px" alt="Red Hat"  href="https://redhat.com" >
+</footer><script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

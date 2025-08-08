@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Analyzing results and debugging failures :: Ansible Basics</title>
+    <link rel="prev" href="executing-playbooks-on-the-lab-setup.html">
+    <link rel="next" href="../appendix/appendix.html">
+    <meta name="generator" content="Antora 3.1.3">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://www.redhat.com" target="_blank"><img src="../../../_/img/redhat-logo.png" height="40px" alt="Red Hat"></a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="../../..">Ansible Basics</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://github.com/RedHatQuickCourses/REPLACEREPONAME/issues" target="_blank">Report Issues</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="aks-test-1" data-version="1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Ansible Basics</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Home</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../LABENV/index.html">Lab Environment</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../introduction-to-ansible/introduction-to-ansible.html">Introduction to Ansible</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/what-is-ansible-and-its-use-cases.html">What is Ansible and its use cases</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../introduction-to-ansible/installing-and-configuring-ansible.html">Installing and configuring Ansible</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../ansible-architecture/ansible-architecture.html">Ansible Architecture</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../ansible-architecture/ansible-control-nodes-and-managed-nodes.html">Ansible control nodes and managed nodes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../ansible-architecture/communication-between-nodes-using-ssh-or-winrm.html">Communication between nodes using SSH or WinRM</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../playbooks-basics/playbooks-basics.html">Playbooks Basics</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../playbooks-basics/understanding-playbook-syntax-and-structure.html">Understanding playbook syntax and structure</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../playbooks-basics/writing-simple-playbooks-for-basic-tasks.html">Writing simple playbooks for basic tasks</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="hands-on-lab.html">Hands-on Lab</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="setting-up-a-lab-environment-for-practice.html">Setting up a lab environment for practice</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="executing-playbooks-on-the-lab-setup.html">Executing playbooks on the lab setup</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="analyzing-results-and-debugging-failures.html">Analyzing results and debugging failures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../appendix/appendix.html">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Ansible Basics</span>
+    <span class="version">1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">Ansible Basics</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Ansible Basics</a></li>
+    <li><a href="hands-on-lab.html">Hands-on Lab</a></li>
+    <li><a href="analyzing-results-and-debugging-failures.html">Analyzing results and debugging failures</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Analyzing results and debugging failures</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Analyzing Results and Debugging Failures</strong></p>
+</div>
+<div class="paragraph">
+<p>In this section, we&#8217;ll explore how to analyze the results of Ansible playbooks and troubleshoot issues that may arise during execution. Familiarity with writing simple playbooks is assumed (see [Playbooks Basics](#playbooks-basics)).</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_understanding_playbook_execution"><a class="anchor" href="#_understanding_playbook_execution"></a>Understanding Playbook Execution</h3>
+<div class="paragraph">
+<p>When you run an Ansible playbook, it executes on managed nodes according to its structure and tasks. After completion, Ansible provides detailed information about the execution in various log files and output formats.</p>
+</div>
+<div class="sect3">
+<h4 id="_key_output_files"><a class="anchor" href="#_key_output_files"></a>Key Output Files</h4>
+<div class="paragraph">
+<p>Ansible generates the following essential output files when a playbook runs:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>playbook_output.log</strong>: Contains high-level summaries of playbook execution, including successes and failures.</p>
+</li>
+<li>
+<p><strong>playbook_stdout.log</strong>: Logs standard output (info messages) from tasks and modules.</p>
+</li>
+<li>
+<p><strong>playbook_stderr.log</strong>: Logs standard error (errors or exceptions) from tasks and modules.</p>
+</li>
+<li>
+<p><strong>playbook_vars.json</strong>: Stores variable values used during playbook execution.</p>
+</li>
+<li>
+<p><strong>playbook_host_facts.yaml</strong> and <strong>playbook_all_facts.yaml</strong>: Store host and all facts gathered by Ansible, respectively.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>To locate these files, refer to the <code>[ansible_env]/ansible-playbook</code> directory in your working environment after running a playbook.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_analyzing_playbook_results"><a class="anchor" href="#_analyzing_playbook_results"></a>Analyzing Playbook Results</h3>
+<div class="paragraph">
+<p>After executing a playbook, review the output files mentioned above to understand the execution results:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>playbook_output.log</strong>: Quickly identify overall success or failure of tasks and plays within the playbook.</p>
+</li>
+<li>
+<p><strong>playbook_stdout.log</strong>: Examine info messages, which can provide context for understanding task progression.</p>
+</li>
+<li>
+<p><strong>playbook_stderr.log</strong>: Investigate error messages to pinpoint issues during module execution.</p>
+</li>
+<li>
+<p><strong>playbook_vars.json</strong>: Inspect variable values to ensure correct configuration and troubleshoot unexpected behavior.</p>
+</li>
+<li>
+<p><strong>playbook_host_facts.yaml</strong> and <strong>playbook_all_facts.yaml</strong>: Use gathered facts for debugging, especially when dealing with conditional statements or variable usage in playbooks.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_debugging_failures"><a class="anchor" href="#_debugging_failures"></a>Debugging Failures</h3>
+<div class="paragraph">
+<p>When encountering failures, follow this structured approach to identify and resolve issues:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Review Playbook Syntax</strong>: Verify the playbook&#8217;s structure, indentation, and correct module usage according to [Playbooks Basics](#playbooks-basics).</p>
+</li>
+<li>
+<p><strong>Inspect Error Messages</strong>: Focus on <code>playbook_stderr.log</code> for specific error descriptions. Common issues include connection errors, module failures, or incorrect variable references.</p>
+</li>
+<li>
+<p><strong>Validate Facts</strong>: Ensure gathered facts (<code>playbook_host_facts.yaml</code>, <code>playbook_all_facts.yaml</code>) align with your expectations, as discrepancies might lead to unexpected behavior.</p>
+</li>
+<li>
+<p><strong>Check Variable Values</strong>: Confirm correct variable usage and values in playbooks using <code>playbook_vars.json</code>. Incorrect or missing variables often cause task failures.</p>
+</li>
+<li>
+<p><strong>Use Debugging Features</strong>: Leverage Ansible&#8217;s debugging capabilities:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>-d/--debug</strong>: Enables detailed output during execution, including module arguments and returns.</p>
+</li>
+<li>
+<p><strong>-vvv/--verbose</strong>: Increases verbosity for more detailed logs.</p>
+</li>
+<li>
+<p><strong>--step</strong>: Breaks down playbook execution into individual steps, useful for pinpointing specific failures.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_hands_on_lab_activity_analyzing_results_and_debugging_failures"><a class="anchor" href="#_hands_on_lab_activity_analyzing_results_and_debugging_failures"></a>Hands-on Lab Activity: Analyzing Results and Debugging Failures</h3>
+<div class="paragraph">
+<p><strong>Objective:</strong> Practice analyzing playbook results and debugging failures in a controlled environment.</p>
+</div>
+<div class="paragraph">
+<p><strong>Setup:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Follow the [Setting up a lab environment for practice](#hands-on-lab) instructions to establish your test environment with control and managed nodes.</p>
+</li>
+<li>
+<p>Write a simple playbook (<code>debug_playbook.yml</code>) that performs basic tasks, such as copying files or managing services:</p>
+<div class="literalblock">
+<div class="content">
+<pre>```yaml
+---
+- name: Debug Playbook
+  hosts: all
+  become: yes</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>tasks:
+  - name: Copy example file
+    copy:
+      src: /etc/example_file
+      dest: /tmp/example_file</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>name: Start example service
+      service:
+        name: example_service
+        state: started
+<code>`</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Execute the playbook with different debugging options (<code>-d</code>, <code>-vvv</code>, <code>--step</code>) and analyze corresponding output files.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Execution:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Run the playbook without errors first to establish a baseline:</p>
+<div class="literalblock">
+<div class="content">
+<pre>```bash
+ansible-playbook -i inventory debug_playbook.yml
+```</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Introduce a failure by modifying the playbook, e.g., change the service name to a non-existent one:</p>
+<div class="literalblock">
+<div class="content">
+<pre>```yaml
+---
+- name: Debug Playbook
+  hosts: all
+  become: yes</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>tasks:
+  - name: Copy example file
+    copy:
+      src: /etc/example_file
+      dest: /tmp/example_file</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>name: Start example service
+      service:
+        name: non_existent_service  # Modified to cause a failure
+        state: started
+<code>`</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Run the modified playbook with debugging options and analyze output files (<code>playbook_output.log</code>, <code>playbook_stdout.log</code>, <code>playbook_stderr.log</code>, <code>playbook_vars.json</code>, and fact files) to identify and resolve the issue.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Reflection:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Summarize the debugging process and chosen strategies for resolving failures.</p>
+</li>
+<li>
+<p>Discuss potential real-world scenarios where similar debugging techniques would be applied.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>By completing this hands-on lab activity, you will gain practical experience in analyzing Ansible playbook results and effectively debugging failures. This skill is crucial for managing complex automation tasks and troubleshooting issues in production environments.</p>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="executing-playbooks-on-the-lab-setup.html">Executing playbooks on the lab setup</a></span>
+  <span class="next"><a href="../appendix/appendix.html">Appendix</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <img src="../../../_/img/rhl-logo-red.png" height="40px" alt="Red Hat"  href="https://redhat.com" >
+</footer><script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
