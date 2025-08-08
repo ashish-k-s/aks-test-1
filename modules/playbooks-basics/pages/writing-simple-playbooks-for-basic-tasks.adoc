@@ -1,0 +1,81 @@
+#  Writing simple playbooks for basic tasks
+
+=== Playbooks Basics: Writing Simple Playbooks for Basic Tasks
+
+In Ansible, a playbook is a file containing one or more plays. Each play outlines specific tasks that need to be executed on managed nodes (target servers). Playbooks are written in YAML format and use Ansible's declarative language to describe the desired system state. This section will guide you through writing simple playbooks for basic administrative tasks.
+
+#### Understanding Playbook Syntax and Structure
+
+A typical Ansible playbook has the following structure:
+
+```yaml
+---
+- name: Playbook description
+  hosts: Target servers or group(s)
+  gather_facts: Whether to gather facts about remote nodes (yes/no)
+  vars: Variable definitions for the play
+  tasks: List of tasks to be executed on managed nodes
+    task1: Description of the first task
+      command: Command to execute
+      register: A variable to store the output or return value
+```
+
+- `name`: An optional description of what the playbook does.
+- `hosts`: The servers or groups of servers on which tasks will be executed.
+- `gather_facts`: Controls whether Ansible gathers simple facts about remote nodes before executing a play (set to 'yes' by default).
+- `vars`: Defines variables for use across the play.
+- `tasks`: A list of tasks to be executed, with each task having a name, description, and a set of actions.
+
+#### Writing Simple Playbooks
+
+Let's create simple playbooks for basic administrative tasks:
+
+1. **Create a new file** called `basic_tasks.yml` and open it in your preferred text editor.
+2. **Insert the following content** to create a playbook that installs Apache web server on target servers:
+
+```yaml
+---
+- name: Install Apache webserver
+  hosts: webservers
+  gather_facts: yes
+  become: yes
+
+  tasks:
+    - name: Ensure Apache is installed
+      apt:
+        name: apache2
+        state: present
+
+    - name: Start and enable the Apache service
+      service:
+        name: apache2
+        enabled: yes
+        state: started
+```
+
+In this playbook:
+- The `webservers` group contains the target servers where you want to install Apache. Make sure to configure your inventory file (`ansible_host`) accordingly.
+- `become: yes` ensures that tasks are run with root privileges using `sudo`.
+- Two tasks are defined:
+  1. Use the `apt` module to ensure the `apache2` package is installed and present on managed nodes.
+  2. Start and enable the Apache service using the `service` module.
+
+3. **Save** the playbook file (`basic_tasks.yml`).
+4. To execute this playbook, run the following command in your terminal:
+
+   ```bash
+   ansible-playbook basic_tasks.yml
+   ```
+
+This playbook will connect to the specified web servers, install Apache, start the service, and ensure it starts on boot. Review the output to see the success or failure of each task.
+
+#### Troubleshooting and Insights
+
+When writing and executing Ansible playbooks, consider these tips for troubleshooting:
+
+- Check the `ansible-lint` tool for syntax errors and best practices compliance in your playbook files.
+- Review logs located at `/var/log/ansible` on managed nodes for detailed task execution information.
+- Use `ansible --version` to check your Ansible installation, and compare it with the required version for your playbooks.
+- Ensure proper inventory configuration and connectivity between control and managed nodes before executing playbooks.
+
+By understanding the structure of Ansible playbooks and practicing with simple tasks like installing web servers, you can build a strong foundation in using Ansible for automating system administration tasks. As you gain experience, expand your playbooks to incorporate more complex configurations and orchestration.

@@ -1,0 +1,3 @@
+* xref:ansible-architecture.adoc[]
+** xref:ansible-control-nodes-and-managed-nodes.adoc[]
+** xref:communication-between-nodes-using-ssh-or-winrm.adoc[]

@@ -1,0 +1,109 @@
+#  Analyzing results and debugging failures
+
+**Analyzing Results and Debugging Failures**
+
+In this section, we'll explore how to analyze the results of Ansible playbooks and troubleshoot issues that may arise during execution. Familiarity with writing simple playbooks is assumed (see [Playbooks Basics](#playbooks-basics)).
+
+### Understanding Playbook Execution
+
+When you run an Ansible playbook, it executes on managed nodes according to its structure and tasks. After completion, Ansible provides detailed information about the execution in various log files and output formats.
+
+#### Key Output Files
+Ansible generates the following essential output files when a playbook runs:
+
+1. **playbook_output.log**: Contains high-level summaries of playbook execution, including successes and failures.
+2. **playbook_stdout.log**: Logs standard output (info messages) from tasks and modules.
+3. **playbook_stderr.log**: Logs standard error (errors or exceptions) from tasks and modules.
+4. **playbook_vars.json**: Stores variable values used during playbook execution.
+5. **playbook_host_facts.yaml** and **playbook_all_facts.yaml**: Store host and all facts gathered by Ansible, respectively.
+
+To locate these files, refer to the `[ansible_env]/ansible-playbook` directory in your working environment after running a playbook.
+
+### Analyzing Playbook Results
+
+After executing a playbook, review the output files mentioned above to understand the execution results:
+
+1. **playbook_output.log**: Quickly identify overall success or failure of tasks and plays within the playbook.
+2. **playbook_stdout.log**: Examine info messages, which can provide context for understanding task progression.
+3. **playbook_stderr.log**: Investigate error messages to pinpoint issues during module execution.
+4. **playbook_vars.json**: Inspect variable values to ensure correct configuration and troubleshoot unexpected behavior.
+5. **playbook_host_facts.yaml** and **playbook_all_facts.yaml**: Use gathered facts for debugging, especially when dealing with conditional statements or variable usage in playbooks.
+
+### Debugging Failures
+
+When encountering failures, follow this structured approach to identify and resolve issues:
+
+1. **Review Playbook Syntax**: Verify the playbook's structure, indentation, and correct module usage according to [Playbooks Basics](#playbooks-basics).
+2. **Inspect Error Messages**: Focus on `playbook_stderr.log` for specific error descriptions. Common issues include connection errors, module failures, or incorrect variable references.
+3. **Validate Facts**: Ensure gathered facts (`playbook_host_facts.yaml`, `playbook_all_facts.yaml`) align with your expectations, as discrepancies might lead to unexpected behavior.
+4. **Check Variable Values**: Confirm correct variable usage and values in playbooks using `playbook_vars.json`. Incorrect or missing variables often cause task failures.
+5. **Use Debugging Features**: Leverage Ansible's debugging capabilities:
+   - **-d/--debug**: Enables detailed output during execution, including module arguments and returns.
+   - **-vvv/--verbose**: Increases verbosity for more detailed logs.
+   - **--step**: Breaks down playbook execution into individual steps, useful for pinpointing specific failures.
+
+### Hands-on Lab Activity: Analyzing Results and Debugging Failures
+
+**Objective:** Practice analyzing playbook results and debugging failures in a controlled environment.
+
+**Setup:**
+
+1. Follow the [Setting up a lab environment for practice](#hands-on-lab) instructions to establish your test environment with control and managed nodes.
+2. Write a simple playbook (`debug_playbook.yml`) that performs basic tasks, such as copying files or managing services:
+
+   ```yaml
+   ---
+   - name: Debug Playbook
+     hosts: all
+     become: yes
+
+     tasks:
+       - name: Copy example file
+         copy:
+           src: /etc/example_file
+           dest: /tmp/example_file
+
+       - name: Start example service
+         service:
+           name: example_service
+           state: started
+   ```
+
+3. Execute the playbook with different debugging options (`-d`, `-vvv`, `--step`) and analyze corresponding output files.
+
+**Execution:**
+
+1. Run the playbook without errors first to establish a baseline:
+
+   ```bash
+   ansible-playbook -i inventory debug_playbook.yml
+   ```
+
+2. Introduce a failure by modifying the playbook, e.g., change the service name to a non-existent one:
+
+   ```yaml
+   ---
+   - name: Debug Playbook
+     hosts: all
+     become: yes
+
+     tasks:
+       - name: Copy example file
+         copy:
+           src: /etc/example_file
+           dest: /tmp/example_file
+
+       - name: Start example service
+         service:
+           name: non_existent_service  # Modified to cause a failure
+           state: started
+   ```
+
+3. Run the modified playbook with debugging options and analyze output files (`playbook_output.log`, `playbook_stdout.log`, `playbook_stderr.log`, `playbook_vars.json`, and fact files) to identify and resolve the issue.
+
+**Reflection:**
+
+- Summarize the debugging process and chosen strategies for resolving failures.
+- Discuss potential real-world scenarios where similar debugging techniques would be applied.
+
+By completing this hands-on lab activity, you will gain practical experience in analyzing Ansible playbook results and effectively debugging failures. This skill is crucial for managing complex automation tasks and troubleshooting issues in production environments.

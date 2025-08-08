@@ -1,0 +1,3 @@
+* xref:playbooks-basics.adoc[]
+** xref:understanding-playbook-syntax-and-structure.adoc[]
+** xref:writing-simple-playbooks-for-basic-tasks.adoc[]

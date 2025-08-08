@@ -1,0 +1,112 @@
+#  Installing and configuring Ansible
+
+= Installing and Configuring Ansible
+
+== What is Ansible?
+
+Ansible is an open-source automation tool, or "configuration management tool," that helps simplify the management and deployment of systems. It uses a human-readable, declarative language (YAML) to define system configurations, making it accessible for users of varying technical levels. Ansible automates tasks such as application deployment, configuration management, and orchestration, allowing IT teams to manage their infrastructure efficiently and reduce manual intervention.
+
+== Prerequisites
+
+Before installing Ansible, ensure your system meets the following requirements:
+
+- A modern operating system (Linux, macOS, or Windows - with WSL2 installed for Windows)
+- Python 3.6 or higher
+- Git (optional but recommended for accessing the latest code and examples)
+
+== Installing Ansible
+
+There are two ways to install Ansible on your system: using package managers or by installing from source. Here, we'll cover installation via package managers for simplicity.
+
+**On Linux (Debian/Ubuntu based):**
+
+```shell
+$ sudo apt update
+$ sudo apt install software-properties-common
+$ sudo apt add-repository --yes --update universe
+$ sudo apt install ansible
+```
+
+**On macOS (Homebrew):**
+
+```shell
+$ brew tap ansible/ansible
+$ brew install ansible
+```
+
+**On Windows (Chocolatey):**
+
+First, install [Windows Subsystem for Linux (WSL2)](https://docs.microsoft.com/en-us/windows/wsl/install-win10). After setting up WSL2, open a new WSL terminal and follow the Linux instructions above.
+
+```shell
+$ choco install -y ansible
+```
+
+**Verifying Installation:**
+
+After installation, verify it by checking Ansible version:
+
+```shell
+$ ansible --version
+```
+
+You should see output similar to this, indicating a successful installation:
+
+```
+config file = /etc/ansible/ansible.cfg
+configured module search path = ['/home/user/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+ansible python version = 3.6.9 (default, Mar 11 2020, 18:14:26) [GCC 9.3.0]
+plugin 'cache': 1.1.0
+plugin 'backup': 2.3.0
+plugin 'connections': 1.5.0
+python version = 3.6.9 (default, Mar 11 2020, 18:14:26) [GCC 9.3.0]
+```
+
+== Configuring Ansible
+
+Ansible's configuration file is typically located at `/etc/ansible/ansible.cfg` on Linux systems or in your user directory (`~/.ansible.cfg`) for others. You can customize this file to meet specific needs, such as setting default connection settings (SSH or WinRM), defining inventory files, and adjusting logging preferences.
+
+To create a new configuration file, copy the default one and edit it:
+
+```shell
+$ sudo cp /etc/ansible/ansible.cfg /etc/ansible.cfg
+$ nano /etc/ansible.cfg  # or your preferred text editor
+```
+
+Here are some key settings to consider customizing in your `ansible.cfg`:
+
+- **host_key_checking**: Disable host key checking for testing purposes (not recommended for production).
+  ```ini
+  [defaults]
+  host_key_checking = False
+  ```
+
+- **inventory**: Specify the inventory file location and format.
+  ```ini
+  [defaults]
+  inventory = /path/to/your/inventory.file  # example path
+  inventory_directory = /path/to/your/inventories  # if you have multiple inventories
+  ```
+
+- **log_path**: Define a custom log file location for more organized logging.
+  ```ini
+  [logs]
+  path = /var/log/ansible  # or your preferred directory
+  ```
+
+== Hands-on Activity: Verify Installation and Configuration
+
+To practice with Ansible, set up a simple lab environment:
+
+1. On a Linux host (your control node), ensure you have SSH access to another Linux machine (managed node) without a graphical interface. You can use virtual machines for this purpose using tools like VirtualBox or VMware.
+2. Execute the following ad-hoc command to ping your managed node, ensuring Ansible can connect and manage it:
+
+   ```shell
+   $ ansible all -m ping
+   ```
+
+   Replace `all` with specific hostnames if you have only one managed node.
+
+3. Review the output to confirm successful communication between your control node and managed nodes.
+
+You've now successfully installed and configured Ansible for basic usage. In the next sections, we will explore playbooks and delve deeper into automating tasks using Ansible.

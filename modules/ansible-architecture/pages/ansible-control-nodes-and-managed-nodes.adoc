@@ -1,0 +1,25 @@
+#  Ansible control nodes and managed nodes
+
+= Ansible Control Nodes and Managed Nodes
+
+Ansible operates on a client-server model where one or more servers, known as **control nodes**, manage one or more clients, referred to as **managed nodes**. This architecture allows for efficient automation of configuration management, deployment, and orchestration tasks across an entire IT infrastructure.
+
+## Control Nodes
+
+A control node is the central hub in an Ansible environment. It runs the Ansible software and manages communication with managed nodes. Typically, a control node is a dedicated server or a virtual machine where administrators execute Ansible commands to automate tasks on remote systems. Key characteristics of control nodes include:
+
+1. **Ansible Installation**: The control node must have Ansible installed and properly configured. This enables it to understand and interpret playbooks written in YAML format.
+2. **Inventory Management**: Control nodes maintain an inventory file, which is a list of managed nodes grouped logically for easier management. This file can be static (defined within the Ansible project) or dynamic (generated from external sources like cloud providers).
+3. **Connection Broker**: Control nodes act as connection brokers, utilizing various connection plugins to establish secure communication channels with managed nodes using protocols such as SSH (for Linux/Unix systems) or WinRM (for Windows systems).
+4. **Playbook Execution**: Control nodes execute playbooks, translating high-level tasks into low-level operations that are then carried out on the managed nodes.
+
+## Managed Nodes
+
+Managed nodes are the target systems in an Ansible environment that receive and execute automated tasks from control nodes. These can be physical or virtual machines, containers, cloud instances, network devices, and more. Key characteristics of managed nodes include:
+
+1. **Ansible Agent (Ansible Connection)**: Managed nodes require an Ansible agent or connection plugin to facilitate communication with the control node. This ensures that tasks are executed accurately as per the instructions provided in playbooks.
+2. **Inventory Registration**: Managed nodes should be registered and properly listed in the control node's inventory file, allowing for efficient targeting during playbook execution.
+3. **Task Execution**: Upon receiving instructions from the control node, managed nodes execute tasks locally. This could involve installing packages, configuring services, or managing files, depending on the playbook's requirements.
+4. **Idempotency**: Managed nodes employ idempotency to ensure that repeated task executions do not cause unintended changes, thus maintaining the desired system state.
+
+In summary, understanding Ansible control nodes and managed nodes is crucial for grasping the fundamental architecture of an Ansible environment. Control nodes act as centralized management hubs while managed nodes are the target systems that receive automated tasks. This client-server model empowers administrators to efficiently manage complex IT infrastructures through playbooks, ensuring consistency and reducing manual errors.

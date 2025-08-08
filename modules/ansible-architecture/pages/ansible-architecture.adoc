@@ -1,0 +1,6 @@
+#  Ansible Architecture
+
+- **Ansible Architecture** explores the fundamental components of Ansible's operational structure. It involves understanding two primary entities: control nodes and managed nodes.
+  - Control nodes are the systems from where administrators launch Ansible commands and manage the configuration of managed nodes.
+  - Managed nodes, on the other hand, are the systems that Ansible control nodes manage. These can be any server or workstation.
+  - Communication between control and managed nodes occurs via secure shell (SSH) for Unix-based systems or Windows Remote Management (WinRM) for Windows systems, ensuring a reliable and efficient transfer of automation tasks.

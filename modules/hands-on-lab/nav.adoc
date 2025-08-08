@@ -1,0 +1,4 @@
+* xref:hands-on-lab.adoc[]
+** xref:setting-up-a-lab-environment-for-practice.adoc[]
+** xref:executing-playbooks-on-the-lab-setup.adoc[]
+** xref:analyzing-results-and-debugging-failures.adoc[]

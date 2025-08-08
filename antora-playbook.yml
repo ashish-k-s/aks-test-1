@@ -1,6 +1,6 @@
 site:
-  title: FIXME Course Title
-  start_page: REPLACEREPONAME::index.adoc
+  title:  Ansible Basics
+  start_page: aks-test-1::index.adoc
 
 content:
   sources:

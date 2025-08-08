@@ -1,0 +1,67 @@
+#  Setting up a lab environment for practice
+
+To set up a lab environment for practicing Ansible, you'll need two virtual machines (VMs) or physical hosts: one acting as the control node and the other as the managed node. This setup will allow you to learn Ansible's core functionality by managing and automating tasks on remote systems. Here's a step-by-step guide using VirtualBox for creating VMs, but you can use any virtualization software of your choice.
+
+### Prerequisites
+
+1. Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) or another preferred virtualization software.
+2. Download and install [Ansible] (https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html) on your host machine (the machine where you'll run VirtualBox and manage the VMs).
+
+### Step 1: Create two VMs
+
+1. Open VirtualBox and click "New" to create a new virtual machine.
+2. Name the first VM `ansible-control` and choose an appropriate Operating System (e.g., Ubuntu Server 20.04 LTS) and version. Allocate sufficient RAM (e.g., 2GB) and create a virtual hard disk (VDI).
+3. Repeat the process to create another VM named `ansible-managed`, selecting the same OS and allocating similar resources.
+
+### Step 2: Configure network settings
+
+1. Select each VM and click on "Settings".
+2. Go to the "Network" tab and choose "NAT" for both VMs. This will allow them to connect to the internet but keep them isolated from the host machine's network.
+3. For the `ansible-control` node, ensure that port forwarding is configured for SSH (port 22) if needed.
+
+### Step 3: Start and install required software on managed node
+
+1. Start both VMs.
+2. Log in to the `ansible-managed` VM as a root user or a user with sudo privileges.
+3. Update package lists and install OpenSSH server:
+
+   ```
+   sudo apt update
+   sudo apt install openssh-server -y
+   ```
+
+### Step 4: Configure firewall on managed node (optional)
+
+1. Allow SSH connections via the UFW firewall:
+
+   ```
+   sudo ufw allow ssh
+   ```
+
+### Step 5: Prepare control node for Ansible usage
+
+1. Log in to the `ansible-control` VM as a root user or a user with sudo privileges.
+2. Generate an inventory file, which Ansible uses to keep track of managed nodes:
+
+   ```
+   sudo nano /etc/ansible/hosts
+   ```
+3. Add the following content to the inventory file:
+
+   ```ini
+   [managed_nodes]
+   ansible-managed ansible_host=<managed_node_ip>  # Replace <managed_node_ip> with the actual IP address of the managed node
+   ```
+
+   You can replace `ansible-managed` with a more descriptive hostname if preferred.
+
+### Step 6: Test connectivity
+
+1. On your host machine, ping the managed node using its IP address to ensure network connectivity.
+2. Run an ad-hoc Ansible command to test connectivity from the control node to the managed node:
+
+   ```
+   ansible ansible-managed -m ping
+   ```
+
+You now have a basic lab environment set up for practicing Ansible. You can proceed with writing and executing simple playbooks to manage tasks on your managed node. In the next steps, you'll learn how to write these playbooks and execute them against your lab setup.

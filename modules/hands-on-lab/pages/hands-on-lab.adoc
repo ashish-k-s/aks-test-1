@@ -1,0 +1,7 @@
+#  Hands-on Lab
+
+= Hands-on Lab
+   - Set up a practical environment for applying Ansible skills.
+   - Execute playbooks within the lab setup to automate tasks.
+   - Analyze outcomes of playbook execution, identifying successes and troubleshooting failures.
+   - Key steps: Establishing a test environment, running playbooks, and interpreting results for learning purposes.
