@@ -1,16 +1,16 @@
 name: aks-test-1
-title:  Ansible Basics
+title:  RHEL Lightspeed Overview
 version: 1
 nav:
 - modules/ROOT/nav.adoc
 - modules/LABENV/nav.adoc
 
-- modules/introduction-to-ansible/nav.adoc
+- modules/introduction-to-rhel-lightspeed/nav.adoc
 
-- modules/ansible-architecture/nav.adoc
+- modules/the-command-line-assistant-powered-by-rhel-lightspeed/nav.adoc
 
-- modules/playbooks-basics/nav.adoc
+- modules/rhel-lightspeed-use-of-generative-ai-functionalities/nav.adoc
 
-- modules/hands-on-lab/nav.adoc
+- modules/rhel-lifecycle-support-and-policies/nav.adoc
 
 - modules/appendix/nav.adoc

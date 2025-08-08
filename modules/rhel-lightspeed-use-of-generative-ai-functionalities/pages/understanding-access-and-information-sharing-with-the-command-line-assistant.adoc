@@ -1,0 +1,26 @@
+#  Understanding access and information sharing with the command-line assistant
+
+== Understanding Access and Information Sharing with the Command-Line Assistant
+
+The command-line assistant powered by RHEL Lightspeed is designed to provide assistance without directly accessing sensitive system data, aligning with user privacy and security best practices. Here's how access and information sharing work within this framework:
+
+1. **Indirect Information Access**: The command-line assistant does not directly access your system's information. For instance, if you ask for memory usage details, the assistant cannot retrieve it from your system but instead guides you on executing a relevant command (e.g., `free -h`) to obtain this data yourself.
+
+2. **Input Methods**: To ensure users can provide necessary context without exposing sensitive information, several methods are available:
+
+   - **Prompt or Question Inclusion**: Users directly include required details in their queries.
+   - **File Attachment**: Using the `--attachment` option, users can upload relevant files without sharing them over the network.
+   - **Shell Pipeline**: Utilizing the `--with-output` option, users can pass command output to the assistant for contextual assistance.
+
+3. **Data Flow Process**: The interaction between user and the command-line assistant follows a secure process flow:
+
+   - **Input Reception (1)**: The command-line assistant receives the user's query and any associated data or instructions.
+   - **Logging and Storing Conversations**: Complete chat transcripts, including queries and responses, are stored locally for user reference and potentially sent to Red Hat for service improvements. These logs do not include personal information per the design principle of the command-line assistant.
+   - **Backend Processing (2)**: The input is processed by the backend system to prepare it for AI inference.
+   - **Knowledge Retrieval (3)**: The assistant searches its knowledge base, which includes system documentation and relevant instructions, to find pertinent information related to the user's query.
+   - **AI Inference (4)**: The gathered data, along with user-provided context, is sent to the configured Large Language Model (LLM) provider for processing and generating a response.
+   - **Output Generation (5)**: Finally, the assistant delivers its AI-generated output as a response to the user.
+
+4. **Privacy Commitment**: The design of the command-line assistant emphasizes not collecting or processing personal information. Users are expected to refrain from sharing such data intentionally. Local logs of interactions provide users access to their chat history while ensuring that Red Hat can use this aggregated, anonymized data for enhancing products and services.
+
+By maintaining a clear separation between user systems and the AI-powered command-line assistant, RHEL Lightspeed ensures secure and privacy-conscious assistance, offering valuable support without compromising sensitive information.

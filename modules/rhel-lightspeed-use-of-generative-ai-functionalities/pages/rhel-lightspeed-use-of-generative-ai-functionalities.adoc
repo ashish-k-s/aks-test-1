@@ -1,0 +1,8 @@
+#  RHEL Lightspeed Use of Generative AI Functionalities
+
+- RHEL Lightspeed leverages generative AI functionalities through the WatsonX AI API LLM (Large Language Model).
+- This SaaS external infrastructure enables the command-line assistant to access and process vast amounts of data from Red Hat's product documentation and Knowledgebase.
+- The AI-driven assistant can offer insights, recommendations, and explanations for managing RHEL systems effectively.
+- It helps users understand complex concepts, configure settings, and troubleshoot issues using natural language queries.
+- Access to information is facilitated securely through this external infrastructure, ensuring privacy and compliance with Red Hat's policies.
+- The integration of generative AI empowers the command-line assistant to deliver more accurate and contextually relevant responses to user queries.

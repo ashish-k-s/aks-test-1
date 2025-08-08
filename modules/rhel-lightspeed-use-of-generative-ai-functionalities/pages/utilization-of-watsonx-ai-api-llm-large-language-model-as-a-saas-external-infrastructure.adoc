@@ -1,0 +1,35 @@
+#  Utilization of WatsonX AI API LLM (Large Language Model) as a SaaS external infrastructure
+
+=== RHEL Lightspeed Use of Generative AI Functionalities ===
+
+RHEL Lightspeed leverages generative AI functionalities through the utilization of the WatsonX AI API LLM (Large Language Model) deployed as a SaaS external infrastructure. This integration allows for an advanced command-line assistant capable of understanding and responding to natural language queries, thereby simplifying complex administrative tasks in managing Red Hat Enterprise Linux (RHEL) systems.
+
+= Utilization of WatsonX AI API LLM (Large Language Model) as a SaaS External Infrastructure
+
+The command-line assistant powered by RHEL Lightspeed draws upon the extensive capabilities of IBM's WatsonX AI API LLM, a large language model. This powerful component is hosted as a service, providing users with easy access to cutting-edge artificial intelligence without the need for on-premises infrastructure management.
+
+## Key Features and Benefits
+
+1. **Natural Language Processing:** The assistant can understand user queries phrased in natural language, allowing system administrators to interact seamlessly using everyday language rather than complex command syntax.
+   
+2. **Comprehensive Knowledge Base Integration:** By tapping into the RHEL product documentation and Red Hat Knowledgebase, the AI model provides accurate and contextually relevant advice, troubleshooting steps, and recommendations for managing RHEL systems.
+   
+3. **Efficient Troubleshooting:** When faced with issues or needing configuration assistance, users can rely on the assistant to guide them through potential solutions, interpret system logs, and suggest appropriate actions based on real-world use cases.
+   
+4. **Scalable and Accessible:** Being a SaaS solution, administrators benefit from a scalable infrastructure that grows with their needs without requiring significant upfront investment in hardware or ongoing maintenance overhead.
+
+## Proxying RHEL System Requests through a Single Proxy System
+
+For environments where internet access is restricted for individual RHEL systems but available for a central proxy, RHEL Lightspeed enables the redirection of system requests to this single internet-connected proxy. The assistant, residing on this proxy server, can then process queries and deliver responses back to the local RHEL instances, ensuring secure and controlled access to external AI-driven resources.
+
+## Limitations and Considerations
+
+While the integration of WatsonX AI API LLM brings numerous advantages, users should be aware of certain limitations:
+
+1. **Dependency on External Service:** The assistant’s functionality is contingent upon the availability and performance of IBM's WatsonX service. Intermittent connectivity or service outages might temporarily affect assistant responsiveness.
+   
+2. **Data Privacy and Security:** As the queries pass through an external server, there are considerations around data privacy and security that users must evaluate against their organizational policies and compliance requirements.
+
+3. **Not a Replacement for Expertise:** Although highly informative, the assistant is not a substitute for in-depth expert knowledge of RHEL system administration. Its responses should be treated as guidance rather than definitive solutions without further verification when necessary.
+
+By understanding these points, administrators can effectively utilize the command-line assistant powered by RHEL Lightspeed and WatsonX AI API LLM to enhance their productivity while adhering to best practices in managing their RHEL environments.

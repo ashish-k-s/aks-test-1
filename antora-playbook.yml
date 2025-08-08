@@ -1,5 +1,5 @@
 site:
-  title:  Ansible Basics
+  title:  RHEL Lightspeed Overview
   start_page: aks-test-1::index.adoc
 
 content:

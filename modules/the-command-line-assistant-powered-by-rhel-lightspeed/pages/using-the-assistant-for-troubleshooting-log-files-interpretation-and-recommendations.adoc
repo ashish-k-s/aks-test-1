@@ -1,0 +1,23 @@
+#  Using the assistant for troubleshooting, log files interpretation, and recommendations
+
+=== Using the Command-Line Assistant for Troubleshooting, Log Files Interpretation, and Recommendations
+
+The command-line assistant powered by RHEL Lightspeed is an invaluable tool for diagnosing system issues, interpreting log files, and receiving actionable recommendations based on your specific context. By harnessing the power of WatsonX AI API LLM (Large Language Model) as a SaaS external infrastructure, the assistant offers intelligent guidance to both novice and experienced users.
+
+To effectively utilize the command-line assistant for troubleshooting purposes, follow these steps:
+
+1. **Pose Clear Questions**: Frame your questions in natural language, focusing on the issue you're facing. For instance, ask "How do I troubleshoot a failing SSHD service?" or "Can you help me interpret these log files and suggest possible solutions for this error?"
+
+2. **Attach Relevant Files (Optional)**: If needed, attach log files or other relevant documents directly to your command-line assistant query using the designated method described in [ATTACHING A FILE TO YOUR QUESTIONS](https://your-antora-repository-link/modules/rhel_lightspeed/pages/using_the_command_line_assistant/asking_questions_to_the_command_line_assistant.adoc#attaching-a-file-to-your-questions-to-the-command-line-assistant). This allows the assistant to analyze specific content and provide more targeted recommendations.
+
+3. **Leverage Terminal Activity Capture**: You can enable the command-line assistant to capture your terminal activity, ensuring that it has contextual information while formulating responses. This is especially useful when dealing with complex issues or long sequences of commands.
+
+4. **Review Recommendations Carefully**: After receiving suggestions from the command-line assistant, critically analyze and test them in your system environment. Remember to always double-check AI-generated responses for accuracy before applying any recommended fixes [WARNING](https://your-antora-repository-link/modules/rhel_lightspeed/pages/using_the_command_line_assistant/troubleshooting_the_command_line_assistant_powered_by_rhel_lightspeed.adoc#warning).
+
+5. **Provide Feedback**: Contribute to the continuous improvement of the command-line assistant by offering feedback on its responses. This helps in refining future suggestions and enhancing overall user experience.
+
+By adhering to these guidelines, users can effectively leverage the command-line assistant for troubleshooting, log files interpretation, and obtaining relevant recommendations tailored to their specific issues within Red Hat Enterprise Linux (RHEL) environments.
+
+== See Also
+* [CHAPTER 5. USING THE COMMAND-LINE ASSISTANT TO DEBUG OR TROUBLESHOOT SYSTEM ISSUES](https://your-antora-repository-link/modules/rhel_lightspeed/pages/using_the_command_line_assistant/debugging_or_troubleshooting_system_issues.adoc)
+* [CHAPTER 6. TROUBLESHOOTING THE COMMAND-LINE ASSISTANT POWERED BY RHEL LIGHTSPEED](https://your-antora-repository-link/modules/rhel_lightspeed/pages/troubleshooting_the_command_line_assistant.adoc)

@@ -1,0 +1,54 @@
+#  Proxying RHEL system requests through an internet-connected single proxy system
+
+== Proxying RHEL System Requests Through an Internet-Connected Single Proxy System
+
+In scenarios where direct internet connectivity for every Red Hat Enterprise Linux (RHEL) system is not desired or feasible, you can employ a single proxy system connected to the internet to handle all outgoing requests from your RHEL systems. This approach ensures secure and controlled access to external resources while maintaining isolation for your internal network.
+
+### Prerequisites
+
+- Ensure that the command-line assistant powered by RHEL Lightspeed is installed on your RHEL systems.
+
+### Procedure
+
+1. **Access the proxy configuration:**
+   Open the `/etc/xdg/command-line-assistant/config.toml` configuration file with a text editor, such as `vi` or `nano`.
+
+   ```bash
+   sudo vi /etc/xdg/command-line-assistant/config.toml
+   ```
+
+2. **Locate and modify the proxy settings:**
+   Find the `[backend]` section in the `config.toml` file and uncomment (remove the `#` at the beginning of the line) and configure the `proxies` key, specifying your internet-connected proxy host for either HTTP or HTTPS traffic. Here's an example for HTTPS:
+
+   ```toml
+   [backend]
+   ...
+   # For a https proxy host
+   proxies = { https = "https://<your-https-proxy-host:1234>" }
+   ```
+
+3. **Save and close the configuration file.**
+
+4. **Restart the command-line assistant service:**
+
+   ```bash
+   sudo systemctl restart clad
+   ```
+
+### Interacting with the Command-Line Assistant Powered by RHEL Lightspeed
+
+After setting up proxy access, you can continue to use the command-line assistant for various interactive workflows, including:
+
+- **Troubleshooting and Log Files Interpretation:** Receive guidance on understanding system logs, error messages, or other troubleshooting scenarios.
+  
+- **Recommendations:** Obtain suggestions on resolving issues, implementing new RHEL features, or finding relevant information.
+
+- **Plain Language Interaction:** Use natural language to communicate with the assistant instead of complex commands, making it more accessible for users unfamiliar with standard command-line interfaces.
+
+### Limitations and Considerations
+
+- The command-line assistant does not have direct access to system details. It relies on the information you provide in your queries.
+  
+- Proxying RHEL system requests through an internet-connected single proxy system ensures controlled and secure access to external resources without requiring every RHEL system to have direct internet connectivity.
+
+By following these steps, you can effectively manage and control internet access for your RHEL systems using a centralized proxy server while leveraging the powerful capabilities of the command-line assistant powered by RHEL Lightspeed.

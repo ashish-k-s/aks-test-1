@@ -1,0 +1,9 @@
+#  RHEL Lifecycle Support and Policies
+
+- **RHEL Lifecycle Support and Policies**
+  - Understand the supported versions of Red Hat Enterprise Linux (RHEL) through its life cycle.
+  - Familiarize with associated policies governing RHEL Lightspeed usage, ensuring adherence to Red Hat's guidelines.
+  - Learn about the critical importance of staying within supported RHEL versions for optimal system stability and security.
+  - Get insights into the limitations of the command-line assistant regarding system information access; it cannot directly provide details like free memory on the system it runs on.
+  - Gain knowledge about proxying all RHEL requests through a single internet-connected system for effective management.
+  - Reference the Red Hat Enterprise Linux Life Cycle documentation for detailed information on supported versions and policies.

@@ -1,0 +1,23 @@
+#  Limitations of the command-line assistant
+
+== Limitations of the Command-Line Assistant Powered by RHEL Lightspeed
+
+While the command-line assistant powered by RHEL Lightspeed offers numerous benefits and interactive capabilities, it is essential to be aware of its limitations:
+
+1. **No Direct System Access**: The command-line assistant does not have direct access to your system information. When asking questions like "how much free memory does this system have?", the assistant cannot gather such details directly from the system. Instead, it guides you to use appropriate commands to retrieve that data. To provide context or necessary input, you can include the information in your query, attach files via the --attachment option, use shell pipelines with --with-output, or follow other supported methods [1].
+
+2. **Privacy and Personal Information**: The command-line assistant is not designed to process personal information. You must refrain from sharing any sensitive data through the assistant. Additionally, interactions are logged locally on your system for chat history access but also sent to Red Hat’s servers for potential service improvements [1].
+
+3. **Limited Troubleshooting Capabilities**: Although the command-line assistant can provide suggestions and guide users through processes, it has limitations in resolving complex technical issues independently. In such scenarios, human expertise might be necessary to interpret results or perform advanced troubleshooting.
+
+4. **Reliance on Internet Proxy for SaaS Infrastructure**: Though the command-line assistant does not require direct internet connectivity on individual systems, utilizing RHEL Lightspeed's Generative AI functionalities (like the WatsonX LLM) necessitates an internet connection through a single proxy system [2].
+
+5. **Language and Clarity**: The assistant relies on clear and understandable language inputs from users. Ambiguous or poorly phrased queries may lead to inaccurate or irrelevant responses, demanding more precise reformulation of questions for better assistance.
+
+6. **Continuous Improvement Nature**: As an evolving technology, the command-line assistant's performance and capabilities may improve over time through updates. However, users should anticipate occasional discrepancies or temporary gaps in functionality as Red Hat refines and expands its offerings [2].
+
+By acknowledging these limitations, users can effectively leverage the command-line assistant powered by RHEL Lightspeed while remaining aware of situations where additional human input or alternative methods might be required.
+
+### References:
+[1] Red Hat Enterprise Linux 10 Interacting with the command-line assistant powered by RHEL Lightspeed, section "What system information can the command-line assistant directly access?" and "What is the process flow for input and output in the command-line assistant?"
+[2] RHEL Lightspeed Use of Generative AI Functionalities and FREQUENTLY ASKED QUESTIONS ABOUT USER DATA SECURITY.

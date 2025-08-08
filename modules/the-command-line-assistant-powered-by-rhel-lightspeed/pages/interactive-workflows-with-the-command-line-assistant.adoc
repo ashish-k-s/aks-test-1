@@ -1,0 +1,54 @@
+#  Interactive workflows with the command-line assistant
+
+== Interactive Workflows with the Command-Line Assistant Powered by RHEL Lightspeed
+
+The command-line assistant powered by RHEL Lightspeed enables interactive workflows, simplifying complex tasks and providing expert guidance for various use cases such as troubleshooting, log files interpretation, and recommendations. Here's how to effectively engage in these interactive sessions:
+
+1. **Starting an Interaction**
+
+   To initiate a conversation with the command-line assistant, simply type your question or concern in plain language. You don't need to use specific commands or syntax as you would in a standard command-line interface. For example:
+
+   ```
+   [user@rhel_system ~]$ What are the common causes for the 'Unable to open /dev/kvm (Permission denied)' error?
+   ```
+
+2. **Utilizing Transcripts**
+
+   The command-line assistant logs and stores complete transcripts of conversations, which helps in tracking previous discussions and ensuring continuity. These transcripts include:
+
+   - User queries
+   - Complete messages sent to the configured Large Language Model (LLM) provider with additional context like system instructions and referenced documentation
+   - Responses from the LLM provider
+
+   You can review these transcripts to revisit past interactions and gain further insights.
+
+3. **AI Inference Process**
+
+   When you provide an input, the following steps occur in the background for processing:
+
+   a. The command-line assistant sends your query along with contextual information to the configured LLM provider (e.g., WatsonX AI API LLM).
+   
+   b. The backend processes the input and searches for relevant knowledge related to your query.
+   
+   c. The command-line assistant combines your query, relevant knowledge, and system instructions to perform AI inference using the chosen LLM.
+   
+   d. Finally, you receive an output or response from the assistant as a result of this inference process.
+
+4. **Troubleshooting and Log Files Interpretation**
+
+   With the command-line assistant, you can effectively interpret complex log files and gain recommendations for troubleshooting issues. For instance:
+
+   ```
+   [user@rhel_system ~]$ Can you help me understand the errors in /var/log/messages?
+   ```
+
+   The assistant will analyze the log files, identify potential problems, and provide suggestions or guidance to address those issues.
+
+5. **Limitations**
+
+   Although powerful, the command-line assistant has certain limitations:
+   
+   - It doesn't require direct internet connectivity on RHEL systems; however, it relies on a single proxy system for external access when needed.
+   - While it strives for accuracy, the assistant's responses are based on its training data and may not cover every edge case or highly specialized scenarios.
+
+By engaging in interactive workflows with the command-line assistant powered by RHEL Lightspeed, users can leverage AI-driven expertise to manage, configure, and troubleshoot Red Hat Enterprise Linux systems more efficiently.

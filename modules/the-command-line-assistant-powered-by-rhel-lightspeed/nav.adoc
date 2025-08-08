@@ -1,0 +1,5 @@
+* xref:the-command-line-assistant-powered-by-rhel-lightspeed.adoc[]
+** xref:interactive-workflows-with-the-command-line-assistant.adoc[]
+** xref:using-the-assistant-for-troubleshooting-log-files-interpretation-and-recommendations.adoc[]
+** xref:limitations-of-the-command-line-assistant.adoc[]
+** xref:proxying-rhel-system-requests-through-an-internet-connected-single-proxy-system.adoc[]

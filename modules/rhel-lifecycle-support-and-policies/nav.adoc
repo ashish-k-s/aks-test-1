@@ -1,0 +1,3 @@
+* xref:rhel-lifecycle-support-and-policies.adoc[]
+** xref:supported-versions-in-red-hat-enterprise-linux-life-cycle.adoc[]
+** xref:associated-policies-for-rhel-lightspeed-use.adoc[]

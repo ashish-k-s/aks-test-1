@@ -1,0 +1,41 @@
+#  Supported versions in Red Hat Enterprise Linux Life Cycle
+
+= RHEL Lightspeed Overview
+
+== RHEL Lifecycle Support and Policies
+:rhel_lifecycle:
+
+Red Hat Enterprise Linux (RHEL) follows a defined lifecycle with specific phases that determine support, updates, and end-of-life (EOL) dates for each version. Understanding this lifecycle is crucial when planning deployments and ensuring ongoing support for your systems. RHEL Lightspeed, as an integrated solution, adheres to these policies to provide optimal support throughout the RHEL lifecycle.
+
+### Supported Versions in Red Hat Enterprise Linux Life Cycle
+
+RHEL versions go through several stages during their lifecycle:
+
+1. **Development Phase (Pre-release)**
+   - During this phase, new features and improvements are developed and tested internally by Red Hat engineers. This period is not considered a supported phase for production deployments.
+
+2. **General Availability (GA)**
+   - Once a version reaches General Availability, it is officially released for customer use in production environments. Support includes bug fixes, security patches, and limited enhancements.
+
+3. **Maintenance Phase**
+   - After the GA phase, RHEL versions enter a Maintenance phase where only critical bug fixes and security updates are provided. This phase aims to ensure stability and reliability for customers using the version in production.
+
+4. **Extended Update Support (EUS)**
+   - For select versions, Red Hat offers Extended Update Support, which provides extended maintenance support beyond the standard Maintenance phase. EUS is designed for mission-critical environments where longer update windows are required.
+
+5. **End of Life (EOL)**
+   - At the end of its lifecycle, a RHEL version reaches End-of-Life (EOL). No further updates, including security patches or bug fixes, are provided after this date. Red Hat recommends upgrading to a supported version for continued support and stability.
+
+### Associated Policies for RHEL Lightspeed Use
+
+RHEL Lightspeed is designed to work seamlessly with the lifecycle policies of RHEL:
+
+- **Support Periods**: RHEL Lightspeed supports only the versions currently in General Availability or Extended Update Support phases, ensuring access to the latest features and security updates.
+  
+- **EOL Management**: Systems reaching End-of-Life are not supported by RHEL Lightspeed. Organizations must plan for timely upgrades to newer supported versions to maintain optimal performance and security.
+
+- **Upgrade Paths**: Red Hat provides clear upgrade paths between major RHEL versions, allowing customers to transition smoothly when older versions reach EOL. RHEL Lightspeed remains compatible with these established migration procedures.
+
+### Conclusion
+
+Understanding the RHEL lifecycle and associated policies is essential for successful RHEL Lightspeed implementation and management. By aligning with Red Hat's lifecycle policies, organizations can effectively leverage RHEL Lightspeed's AI-driven capabilities while ensuring ongoing system stability, security, and support throughout their RHEL deployments.

@@ -1,0 +1,31 @@
+#  Associated policies for RHEL Lightspeed use
+
+== RHEL Lifecycle Support and Policies
+
+    - Supported versions in Red Hat Enterprise Linux Life Cycle
+    - Associated policies for RHEL Lightspeed use
+
+When utilizing RHEL Lightspeed, it's crucial to understand the lifecycle support and associated policies to ensure optimal performance and compliance. This section will outline key aspects of these policies concerning RHEL Lightspeed usage.
+
+### Supported Versions in Red Hat Enterprise Linux Life Cycle
+
+Red Hat Enterprise Linux (RHEL) adheres to a life cycle policy that specifies different phases of support for its versions, as described in the [Red Hat Enterprise Linux Life Cycle](https://access.redhat.com/support/policy/updates/errata/). These phases include:
+
+1. **Full Support**: During this phase, new functionality and significant bug fixes are provided. Security updates are also given high priority.
+2. **Maintenance Support**: In this phase, critical security patches and selected bug fixes are supplied to extend the system's lifespan beyond Full Support.
+3. **Extended Update Support (EUS)**: EUS provides an additional year of support for select major releases, offering stability and long-term maintenance.
+4. **Extended Life Cycle Support (ELS)**: This is a paid option that adds up to two years of extended support for specific RHEL minor releases.
+
+For RHEL Lightspeed, compatibility depends on the supported RHEL versions under each life cycle phase. Make sure your RHEL version aligns with one of these phases to ensure proper functioning and access to updates and security patches.
+
+### Associated Policies for RHEL Lightspeed Use
+
+Several policies govern the use of RHEL Lightspeed, ensuring secure and compliant usage:
+
+1. **Data Privacy**: RHEL Lightspeed does not have direct access to system information. Any shared details with the LLM provider (such as WatsonX AI API) should comply with your organization's data privacy policies and regulations like GDPR or CCPA.
+2. **Network Access Control**: When using a proxy system for internet-connected RHEL deployments, ensure that network access controls are in place to prevent unauthorized connections and data breaches.
+3. **Security Updates and Patching**: Regularly update your RHEL systems with the latest security patches to maintain compliance during each life cycle phase.
+4. **Logging and Monitoring**: Implement logging and monitoring practices to track usage patterns, detect anomalies, and ensure adherence to organizational policies.
+5. **Access Control**: Manage user access to the command-line assistant and RHEL Lightspeed features according to your organization's access control policies, including role-based access (RBAC) and least privilege principles.
+
+By understanding and implementing these supported versions and associated policies, you can effectively use RHEL Lightspeed while maintaining compliance with Red Hat’s lifecycle support guidelines.
